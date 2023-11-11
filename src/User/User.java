@@ -1,16 +1,15 @@
 package User;
 import java.util.Vector;
-import Bills.Bill;
 public class User {
 
-    private Account UserType;
+    private Account userType;
     private String username;
     private String password;
     private int userID;
 //    private Vector<Bill> Bills;
 
     public User(){
-        UserType = new WalletAccount("01000000000", 1000);
+        userType = new WalletAccount("01000000000", 1000);
 //        Bills = new Vector<Bill>();
         username = "Abdelrhman";
         password = "123456";
@@ -23,9 +22,10 @@ public class User {
 //        return Bills;
 //    }
 
-    public Account getUserType() {
-        return UserType;
+    public Account getAccount() {
+        return userType;
     }
+
 
 //    public void setBills(Vector<Bill> bills) {
 //        Bills = bills;

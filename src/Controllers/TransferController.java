@@ -4,17 +4,23 @@ import Providers.IProvider;
 import User.*;
 
 public abstract class TransferController {
-    private DataController dataController = new DataController();
-    private IProvider provider;
-    public abstract void Transfer(User srcAccount, String AccountTwoData, double ammount);
-    //        user distAccount = dataController.getAccount(AccountTwoData);
-    //        Account.getAccountType(); => "Bank  / Wallet" => Factory => createProvider('Bank') => IProvider => IProvider.verify("asdadasdas");
-    //        if (distAccount == null) {
-    //            return;
-    //        }
-    //        if (TransferHandler(srcAccount, distAccount, ammount)) {
-    //            provider.Verify();
-    //        }
+    protected DataController dataController = new DataController();
+    public boolean Transfer(User srcAccount, String AccountTwoData, double ammount) {
+           User distAccount = ParseUserData(AccountTwoData);
+           if (distAccount == null) {
+               return false;
+           }
+           
+           if (TransferHandler(srcAccount.getAccount(), distAccount.getAccount(), ammount)) {
+               return true;
+           }
+           else {
+            return false;
+           }
+    }
+
+    public abstract User ParseUserData(String userData);
+
     private boolean TransferHandler(Account srcAccount ,Account distAccount, double ammount) {
         if (!isValidTransaction(srcAccount, distAccount)) {
             return false;

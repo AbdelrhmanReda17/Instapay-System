@@ -1,3 +1,4 @@
+import Controllers.TransferController;
 import FacadeCollection.FacadeSingleton;
 import FacadeCollection.UserFacade;
 import User.User ;
@@ -6,6 +7,7 @@ import User.BankAccount;
 public class InstapayFacade {
     public UserFacade userFacade;
     public User user;
+    public TransferController transferController;
     public InstapayFacade() {
         user = new User();
         userFacade = new UserFacade();
@@ -24,7 +26,7 @@ public class InstapayFacade {
 
     void StartMenu() {
         boolean isBankAccount = false;
-        if(user.getUserType() instanceof BankAccount) {
+        if(user.getAccount() instanceof BankAccount) {
             isBankAccount = true;
         }
         while(true){
@@ -65,22 +67,23 @@ public class InstapayFacade {
     }
 
     void WalletTransfer(){
+        transferController = new Controllers.WalletTransfer();
         System.out.print("Please enter the mobile number: ");
         String mobileNumber = FacadeSingleton.TakeInput(String.class, "");
         System.out.print("Please enter the amount: ");
         double amount = FacadeSingleton.TakeInput(Double.class, "");
-        // TransferController => Transfer(user , mobileNumber , amount);
-        // if success;
-        //System.out.println("Transfer completed successfully");
+        if (transferController.Transfer(user , mobileNumber , amount)) {    
+            System.out.println("Transfer completed successfully");
+        }
     }
     void InstapayTransfer(){
         System.out.print("Please enter the instapay account number : ");
         String accountNumber = FacadeSingleton.TakeInput(String.class, "");
         System.out.print("Please enter the amount: ");
         double amount = FacadeSingleton.TakeInput(Double.class, "");
-        // TransferController => Transfer(user , accountNumber , amount);
-        // if success;
-        //System.out.println("Transfer completed successfully");
+        if (transferController.Transfer(user , accountNumber , amount)) {    
+            System.out.println("Transfer completed successfully");
+        }
     }
 
     void BankTransfer(){
@@ -88,9 +91,9 @@ public class InstapayFacade {
         String accountNumber = FacadeSingleton.TakeInput(String.class, "");
         System.out.print("Please enter the amount: ");
         double amount = FacadeSingleton.TakeInput(Double.class, "");
-        // TransferController => Transfer(user , accountNumber , amount);
-        // if success;
-        //System.out.println("Transfer completed successfully");
+        if (transferController.Transfer(user , accountNumber , amount)) {    
+            System.out.println("Transfer completed successfully");
+        }
     }
 
 }

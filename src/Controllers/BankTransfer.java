@@ -1,11 +1,15 @@
 package Controllers;
 
+import User.Account;
 import User.User;
 
 public class BankTransfer extends TransferController{
+
     @Override
-    public void Transfer(User srcAccount, String AccountTwoData, double ammount) {
-        // if success;
-        //System.out.println("Transfer completed successfully");
+    public User ParseUserData(String userData) {
+        //User distAccount = dataController.getAccountByBankId(userData);
+        //Account.getAccountType(); => "Bank  / Wallet" => Factory => createProvider('Bank') => IProvider => IProvider.verify("asdadasdas");
+        return new User();
     }
+
 }

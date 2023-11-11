@@ -21,6 +21,7 @@ public abstract class Account {
         }
     }
 
+    
 //    public boolean Transfer(Account distAccount, double ammount) {
 //        if (transactionProcessor.Transfer(this, distAccount, ammount)) {
 //            provider.Verify();
