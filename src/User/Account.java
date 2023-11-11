@@ -4,8 +4,8 @@ import Controllers.TransferController;
 import Providers.IProvider;
 
 public abstract class Account {
-    private IProvider provider; 
-    private TransferController transactionProcessor = new TransferController();
+//    private IProvider provider;
+//    private TransferController transactionProcessor;
     private double Amount;
 
     public void Deposit(double amount) {
