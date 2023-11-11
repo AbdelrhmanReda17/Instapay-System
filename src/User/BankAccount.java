@@ -1,4 +1,4 @@
 package User;
 
-public class BankAccount {
+public class BankAccount extends Account {
 }
