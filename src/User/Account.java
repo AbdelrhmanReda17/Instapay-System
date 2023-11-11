@@ -7,7 +7,6 @@ public abstract class Account {
     private IProvider provider; 
     private TransferController transactionProcessor = new TransferController();
     private double Amount;
-    private int phoneNumber;
 
     public void Deposit(double amount) {
         this.Amount += amount;
@@ -22,12 +21,12 @@ public abstract class Account {
         }
     }
 
-    public boolean Transfer(Account distAccount, double ammount) {
-        if (transactionProcessor.Transfer(this, distAccount, ammount)) {
-            provider.Verify();
-            return true;
-        } else {
-            return false;
-        }
-    }
+//    public boolean Transfer(Account distAccount, double ammount) {
+//        if (transactionProcessor.Transfer(this, distAccount, ammount)) {
+//            provider.Verify();
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
 }

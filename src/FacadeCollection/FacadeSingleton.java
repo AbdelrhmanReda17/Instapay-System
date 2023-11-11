@@ -16,7 +16,7 @@ public class FacadeSingleton {
             try {
                     if (type.equals(String.class)) {
                         String input = scanner.next();
-                        if (input.matches(regexPattern) || regexPattern.equals("")) {
+                        if (input.matches(regexPattern) || regexPattern.isEmpty()) {
                             choice = type.cast(input);
                             isValidInput = true;
                         } else {
