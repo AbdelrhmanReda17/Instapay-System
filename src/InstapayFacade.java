@@ -1,9 +1,6 @@
-import Bills.Bill;
 import Controllers.TransferController;
 import FacadeCollection.FacadeSingleton;
 import FacadeCollection.UserFacade;
-import Factories.BillProvidersFactory;
-import Providers.BillProviders.BillProvider;
 import User.User ;
 import User.BankAccount;
 
@@ -23,6 +20,7 @@ public class InstapayFacade {
                 FacadeSingleton.DisplayExitMessage();
                 return;
             }
+            System.out.println("Welcome " + user.getUsername());
             StartMenu();
         }
     }
@@ -41,13 +39,13 @@ public class InstapayFacade {
                 System.out.println("5. Transfer to Bank Account");
             System.out.println("0. Log out");
             System.out.print("Please select an option [0 - 4]: ");
-            int choice = FacadeSingleton.TakeInput(Integer.class, "");
+            int choice = FacadeSingleton.TakeInput(Integer.class, "" );
             switch (choice) {
                 case 1:
 //                    WalletTransfer();
                     break;
                 case 2:
-//                    PayBill();
+//                    InstapayTransfer();
                     break;
                 case 3:
                   WalletTransfer();
@@ -70,7 +68,7 @@ public class InstapayFacade {
     }
 
     void WalletTransfer(){
-        transferController = new Controllers.WalletTransfer();
+        transferController = new Controllers.WalletTransferController();
         System.out.print("Please enter the mobile number: ");
         String mobileNumber = FacadeSingleton.TakeInput(String.class, "");
         System.out.print("Please enter the amount: ");
@@ -88,22 +86,6 @@ public class InstapayFacade {
             System.out.println("Transfer completed successfully");
         }
     }
-    void PayPill(){
-        System.out.println("1. Gas Bill");
-        System.out.println("2. Electricity Bill");
-        System.out.println("3. Water Bill");
-        int choice = FacadeSingleton.TakeInput(Integer.class, "");
-        switch (choice){
-            case 0:
-        }
-
-        BillProvider provider= BillProvidersFactory.CreateBillProvider(choice);
-        Bill bill=
-
-
-
-    }
-
 
     void BankTransfer(){
         System.out.print("Please enter the account number number: ");

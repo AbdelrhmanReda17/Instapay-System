@@ -1,22 +1,6 @@
 package Bills;
 
 public abstract class Bill {
-    public String getUsername() {
-        return username;
-    }
-
-    public int getBillId() {
-        return billId;
-    }
-
-    public double getTotalAmount() {
-        return totalAmount;
-    }
-
-    public boolean isPaid() {
-        return isPaid;
-    }
-
     private String username;
     private int billId;
     double totalAmount;
