@@ -68,7 +68,7 @@ public class InstapayFacade {
     }
 
     void WalletTransfer(){
-        transferController = new Controllers.WalletTransfer();
+        transferController = new Controllers.WalletTransferController();
         System.out.print("Please enter the mobile number: ");
         String mobileNumber = FacadeSingleton.TakeInput(String.class, "");
         System.out.print("Please enter the amount: ");

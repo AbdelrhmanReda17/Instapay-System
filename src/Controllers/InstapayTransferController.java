@@ -2,7 +2,7 @@ package Controllers;
 
 import User.User;
 
-public class InstapayTransfer extends TransferController {
+public class InstapayTransferController extends TransferController {
 
     @Override
     public User ParseUserData(String userData) {

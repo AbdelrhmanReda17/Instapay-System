@@ -3,7 +3,7 @@ package Controllers;
 import User.Account;
 import User.User;
 
-public class BankTransfer extends TransferController{
+public class BankTransferController extends TransferController{
 
     @Override
     public User ParseUserData(String userData) {

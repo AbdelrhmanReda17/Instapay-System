@@ -3,7 +3,8 @@ package Controllers;
 import User.Account;
 import User.User;
 
-public class WalletTransfer extends TransferController {
+public class WalletTransferController extends TransferController {
+
     @Override
     public User ParseUserData(String userData) {
         //user distAccount = dataController.getAccountByPhoneNumber(userData);
