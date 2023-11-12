@@ -4,7 +4,6 @@ import User.Account;
 import User.User;
 
 public class WalletTransfer extends TransferController {
-
     @Override
     public User ParseUserData(String userData) {
         //user distAccount = dataController.getAccountByPhoneNumber(userData);

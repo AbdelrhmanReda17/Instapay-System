@@ -1,0 +1,4 @@
+UserId,Username,Password,[AccountType-AccountProvider],WalletId Or AccountId
+1,Abdelrhman Reda,123456,Bank-CIB,12
+2,Abdelrhman Reda,123456,Wallet-Vodafone,01270953626
+3,Abdelrhman Reda,123456,Bank-QNB,20

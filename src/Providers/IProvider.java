@@ -1,6 +1,9 @@
 package Providers;
 
+import User.Account;
+
 public interface IProvider {
-    public void Verify();
+    public boolean Verify(String ProviderType , String AccountId);
     public void Update();
+    public Account getAccount(String token);
 }

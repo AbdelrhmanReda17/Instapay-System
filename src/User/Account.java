@@ -4,30 +4,24 @@ import Controllers.TransferController;
 import Providers.IProvider;
 
 public abstract class Account {
-//    private IProvider provider;
-//    private TransferController transactionProcessor;
-    private double Amount;
-
+    private double amount;
+    public Account(double amount) {
+        this.amount = amount;
+    }
     public void Deposit(double amount) {
-        this.Amount += amount;
+        this.amount += amount;
     }
     public boolean Withdraw(double amount) {
-        if (this.Amount >= amount) {
-            this.Amount -= amount;
+        if (this.amount >= amount) {
+            this.amount -= amount;
             return true;
         }
         else {
             return false;
         }
     }
-
-    
-//    public boolean Transfer(Account distAccount, double ammount) {
-//        if (transactionProcessor.Transfer(this, distAccount, ammount)) {
-//            provider.Verify();
-//            return true;
-//        } else {
-//            return false;
-//        }
-//    }
+    public double getAmount() {
+        return amount;
+    }
+    abstract public String getData();
 }

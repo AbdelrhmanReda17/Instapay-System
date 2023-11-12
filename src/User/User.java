@@ -1,34 +1,24 @@
 package User;
-import java.util.Vector;
 public class User {
 
     private Account userType;
     private String username;
     private String password;
     private int userID;
-//    private Vector<Bill> Bills;
-
-    public User(){
-        userType = new WalletAccount("01000000000", 1000);
-//        Bills = new Vector<Bill>();
-        username = "Abdelrhman";
-        password = "123456";
-        userID = 1;
+    public User() {
+    }
+    public User(int userID, String username, String password, Account userType) {
+        this.username = username;
+        this.password = password;
+        this.userID = userID;
+        this.userType = userType;
     }
 //    public String getData(){
-//        return userID + "," + username + "," + password + "," + UserType + "," + Bills;
-//    }
-//    public Vector<Bill> getBills() {
-//        return Bills;
+//        return userID + "," + username + "," + password + "," + userType.getData();
 //    }
 
     public Account getAccount() {
         return userType;
     }
-
-
-//    public void setBills(Vector<Bill> bills) {
-//        Bills = bills;
-//    }
 
 }
