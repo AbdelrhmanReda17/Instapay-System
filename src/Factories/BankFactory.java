@@ -1,8 +1,8 @@
 package Factories;
 
-import Providers.BankProvider;
-import Providers.Banks.CIBProvider;
-import Providers.Banks.QNBProvider;
+import Providers.AccountProviders.BankProvider;
+import Providers.AccountProviders.Banks.CIBProvider;
+import Providers.AccountProviders.Banks.QNBProvider;
 
 public class BankFactory {
     public BankProvider CreateBank(String type) {

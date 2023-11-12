@@ -1,9 +1,10 @@
-package Providers.Banks;
+package Providers.AccountProviders.Wallets;
 
-import Providers.BankProvider;
+import Providers.AccountProviders.WalletProvider;
 import User.Account;
 
-public class QNBProvider extends BankProvider {
+public class VodafoneProvider extends WalletProvider {
+
 
     @Override
     public Account getAccount(String AccountId) {

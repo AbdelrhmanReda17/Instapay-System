@@ -1,20 +1,17 @@
-package Providers.Banks;
+package Providers.AccountProviders.Banks;
 
-import Providers.BankProvider;
+import Providers.AccountProviders.BankProvider;
 import User.Account;
 import User.BankAccount;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 
 public class CIBProvider extends BankProvider {
     private final String AccountsFilePath = "src\\Database\\CIBAccounts.csv";
 
     @Override
     public Account getAccount(String AccountId) {
-        System.out.println("CIB");
         try (BufferedReader reader = new BufferedReader(new FileReader(AccountsFilePath))) {
             reader.readLine();
             String line;

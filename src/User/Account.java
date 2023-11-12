@@ -1,10 +1,8 @@
 package User;
 
-import Controllers.TransferController;
-import Providers.IProvider;
-
 public abstract class Account {
     private double amount;
+    
     public Account(double amount) {
         this.amount = amount;
     }

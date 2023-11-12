@@ -1,6 +1,6 @@
-package Providers.Wallets;
+package Providers.AccountProviders.Wallets;
 
-import Providers.WalletProvider;
+import Providers.AccountProviders.WalletProvider;
 import User.Account;
 
 public class FawryProvider extends WalletProvider {

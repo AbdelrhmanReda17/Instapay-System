@@ -1,13 +1,13 @@
 package Factories;
 
-import Providers.WalletProvider;
-import Providers.Wallets.*;
+import Providers.AccountProviders.WalletProvider;
+import Providers.AccountProviders.Wallets.*;
 
 public class WalletFactory {
     public WalletProvider CreateWallet(String type) {
         return switch (type) {
-            case "CIB" -> new VodafoneProvider();
-            case "QNB" -> new FawryProvider();
+            case "Vodafone" -> new VodafoneProvider();
+            case "Fawry" -> new FawryProvider();
             default -> null;
         };
     }

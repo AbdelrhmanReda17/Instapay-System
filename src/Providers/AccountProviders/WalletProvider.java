@@ -1,4 +1,4 @@
-package Providers;
+package Providers.AccountProviders;
 
 import User.Account;
 

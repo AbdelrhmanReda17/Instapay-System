@@ -1,6 +1,5 @@
 package Controllers;
 
-import Providers.IProvider;
 import User.*;
 
 public abstract class TransferController {
@@ -34,7 +33,7 @@ public abstract class TransferController {
             return false;
         }
     }
-
+    //violate open close 
     private boolean isValidTransaction(Account srAccount, Account distAccount) {
         if (srAccount == null || distAccount == null) {
             return false;
