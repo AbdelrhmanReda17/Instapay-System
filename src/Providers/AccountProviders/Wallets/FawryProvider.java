@@ -11,7 +11,7 @@ public class FawryProvider extends WalletProvider {
     }
 
     @Override
-    public Account getAccount(String AccountId) {
+    public Account getAccount(String PhoneNumber) {
         return null;
     }
 }

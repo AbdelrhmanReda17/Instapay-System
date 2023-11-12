@@ -23,7 +23,7 @@ public class FacadeSingleton {
                             choice = type.cast(input);
                             isValidInput = true;
                         } else {
-                            System.out.println("Invalid input. Please try again.");
+                            System.out.println("your input is not supported or not strong enough, please try again:");
                         }
                     } else if (type.equals(Integer.class)) {
                         choice = type.cast(Integer.parseInt(reader.readLine()));

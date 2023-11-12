@@ -9,7 +9,6 @@ import java.io.FileReader;
 
 public class CIBProvider extends BankProvider {
     private final String AccountsFilePath = "src\\Database\\CIBAccounts.csv";
-
     @Override
     public Account getAccount(String AccountId) {
         try (BufferedReader reader = new BufferedReader(new FileReader(AccountsFilePath))) {
@@ -18,6 +17,7 @@ public class CIBProvider extends BankProvider {
             while ((line = reader.readLine()) != null) {
                 String[] columns = line.split(",");
                 if(columns.length != 4) continue;
+                if(!columns[0].equals(AccountId)) continue;
                 return new BankAccount(columns[0],columns[1],Double.parseDouble(columns[2]) , "CIB" , columns[3]);
             }
         }catch (Exception e) {

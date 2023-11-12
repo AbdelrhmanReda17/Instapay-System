@@ -1,10 +1,22 @@
 package User;
 public class User {
-
     private Account userType;
     private String username;
     private String password;
     private int userID;
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+
+    public void setUserType(Account userType) {
+        this.userType = userType;
+    }
+
     public User() {}
     public String getUsername() {
         return username;

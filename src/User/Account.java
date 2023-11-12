@@ -10,6 +10,11 @@ public abstract class Account {
         this.providerName = ProviderName;
         this.phoneNumber = phoneNumber;
     }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
     public void Deposit(double amount) {
         this.amount += amount;
     }

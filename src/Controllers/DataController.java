@@ -20,6 +20,22 @@ public class DataController {
             System.out.println(e.getMessage());
         }
     }
+    public int getMaxID() {
+        int maxID = 0;
+        try (BufferedReader reader = new BufferedReader(new FileReader(AccountsFilePath))) {
+            reader.readLine();
+            while ((line = reader.readLine()) != null) {
+                String[] columns = line.split(",");
+                if(columns.length != 5) continue;
+                if(Integer.parseInt(columns[0]) > maxID) {
+                    maxID = Integer.parseInt(columns[0]);
+                }
+            }
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return maxID;
+    }
     public boolean UpdateUser(User updatedUser){
         try {
             File file = new File(AccountsFilePath);
