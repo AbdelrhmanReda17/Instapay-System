@@ -5,8 +5,8 @@ import User.Account;
 public abstract class WalletProvider implements IProvider {
 
     @Override
-    public boolean Verify(String WalletType , String AccountId) {
-        return true;
+    public int Verify(String phone ){
+        return 0;
     }
 
     @Override

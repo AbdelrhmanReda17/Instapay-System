@@ -20,6 +20,7 @@ public class InstapayFacade {
                 FacadeSingleton.DisplayExitMessage();
                 return;
             }
+            System.out.println("Welcome " + user.getUsername());
             StartMenu();
         }
     }
@@ -38,7 +39,7 @@ public class InstapayFacade {
                 System.out.println("5. Transfer to Bank Account");
             System.out.println("0. Log out");
             System.out.print("Please select an option [0 - 4]: ");
-            int choice = FacadeSingleton.TakeInput(Integer.class, "");
+            int choice = FacadeSingleton.TakeInput(Integer.class, "" );
             switch (choice) {
                 case 1:
 //                    WalletTransfer();

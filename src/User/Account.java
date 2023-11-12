@@ -2,9 +2,13 @@ package User;
 
 public abstract class Account {
     private double amount;
+    private final String providerName;
+    private final String phoneNumber;
     
-    public Account(double amount) {
+    public Account(double amount , String ProviderName , String phoneNumber) {
         this.amount = amount;
+        this.providerName = ProviderName;
+        this.phoneNumber = phoneNumber;
     }
     public void Deposit(double amount) {
         this.amount += amount;
@@ -18,6 +22,15 @@ public abstract class Account {
             return false;
         }
     }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getProviderName() {
+        return providerName;
+    }
+
     public double getAmount() {
         return amount;
     }

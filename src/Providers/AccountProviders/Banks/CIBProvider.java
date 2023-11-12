@@ -17,9 +17,8 @@ public class CIBProvider extends BankProvider {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] columns = line.split(",");
-                System.out.println(columns.length);
-                if(columns.length != 3) continue;
-                return new BankAccount(columns[0],columns[1] ,Double.parseDouble(columns[2]));
+                if(columns.length != 4) continue;
+                return new BankAccount(columns[0],columns[1],Double.parseDouble(columns[2]) , "CIB" , columns[3]);
             }
         }catch (Exception e) {
             throw new RuntimeException(e);
