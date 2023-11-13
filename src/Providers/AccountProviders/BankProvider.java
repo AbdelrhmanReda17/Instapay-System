@@ -27,5 +27,6 @@ public abstract class BankProvider implements IProvider {
     @Override
     public void Update() {}
     abstract public Account getAccount(String AccountId);
+    abstract public String getName();
     abstract public Account UpdateHandler();
 }

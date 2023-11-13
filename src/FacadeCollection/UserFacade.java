@@ -11,7 +11,7 @@ public class UserFacade {
             System.out.println("2. Register new account");
             System.out.println("0. Exit");
             System.out.print("Please select an option [0 - 2]: ");
-            int choice = FacadeSingleton.TakeInput(Integer.class , "" );
+            int choice = FacadeSingleton.TakeInput(Integer.class , "" , "");
             switch (choice) {
                 case 1:
                     LoginFacade loginFacade = new LoginFacade();

@@ -1,5 +1,8 @@
 UserId,Username,Password,[AccountType-AccountProvider],WalletId Or AccountId
 1,Yassin el gamed,123456,Bank-CIB,1
 3,Abdelrahman,123456,Bank-QNB,20
-
 4,Abdelrhman,159753123222aA@,Bank-CIB,1
+5,ABDELRHMAN,ADSAD123a@,Bank-CIB,1
+6,Abdelrhman12,123456789aA@,Bank-CIB,4
+7,Abdelrhmanad,123123aA@,Bank-CIB,4
+8,adasd,323546aA@,Bank-CIB,1

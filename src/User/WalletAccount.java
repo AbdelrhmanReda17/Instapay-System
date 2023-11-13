@@ -1,13 +1,15 @@
 package User;
+
+import Providers.AccountProviders.IProvider;
+
 public class WalletAccount extends Account {
     private int walletID;
     private String phoneNumber;
-    private String Wallet;
     public WalletAccount(){
-        super(0 , "Wallet" , "0");
+        super(0 , null , "0");
     }
-    public WalletAccount(String phoneNumber, double amount , String Wallet , int walletID){
-        super(amount , Wallet , phoneNumber);
+    public WalletAccount(String phoneNumber, double amount , IProvider walletProvider , int walletID){
+        super(amount , walletProvider , phoneNumber);
         this.phoneNumber = phoneNumber;
     }
 
@@ -20,6 +22,6 @@ public class WalletAccount extends Account {
         System.out.println("Wallet Phone Number: " + this.phoneNumber);
     }
     public String getData(){
-        return "Wallet" + "-" + getProviderName() + "," + walletID;
+        return "Wallet" + "-" + getProvider().toString() + "," + walletID;
     }
 }

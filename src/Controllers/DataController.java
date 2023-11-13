@@ -36,6 +36,20 @@ public class DataController {
         }
         return maxID;
     }
+    public boolean checkUsername(String username){
+        try (BufferedReader reader = new BufferedReader(new FileReader(AccountsFilePath))) {
+            reader.readLine();
+            while ((line = reader.readLine()) != null) {
+                String[] columns = line.split(",");
+                if(columns.length != 5) continue;
+                if(columns[1].equals(username)) return false;
+                continue;
+            }
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return true;
+    }
     public boolean UpdateUser(User updatedUser){
         try {
             File file = new File(AccountsFilePath);

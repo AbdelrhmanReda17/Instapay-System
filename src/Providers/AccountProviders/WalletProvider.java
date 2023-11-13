@@ -13,6 +13,7 @@ public abstract class WalletProvider implements IProvider {
     public void Update() {
 
     }
+    abstract public String getName();
 
     abstract public Account getAccount(String AccountId);
     abstract public Account UpdateHandler();
