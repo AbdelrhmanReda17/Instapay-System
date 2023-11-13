@@ -9,7 +9,6 @@ public class InstapayView {
             System.out.println("0. Exit");
             System.out.print("Please select an option [0 - 2]: ");
             return  Main.InstapayUtilites.TakeInput(Integer.class , "[0-2]" , "Invalid input, please enter a number between 0 and 2.");
-//
         }
     }
 

@@ -4,6 +4,10 @@ import User.model.User;
 
 public class InstapayTransferController extends TransferController {
 
+    InstapayTransferController() {
+        
+    }
+    
     @Override
     public User ParseUserData(String userData) {
         // instapay ID.

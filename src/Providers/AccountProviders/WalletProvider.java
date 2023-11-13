@@ -1,6 +1,6 @@
 package Providers.AccountProviders;
 
-public abstract class WalletProvider implements IProvider {
+public abstract class WalletProvider extends IProvider {
 
     @Override
     public int Verify(String phone ){

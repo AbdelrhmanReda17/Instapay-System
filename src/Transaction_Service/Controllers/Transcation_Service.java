@@ -1,11 +1,17 @@
 package Transaction_Service.Controllers;
 
+import java.util.Set;
+
 import Istapay_interface.view.InstapayView;
+import Main.Main;
+import Providers.BillProviders.BillProvider;
 import User.model.User;
+import Transaction_Service.Bills.Bill;
 import Transaction_Service.view.transactionsView;
 public class Transcation_Service
 {
     User user;
+    TransferController transferController;
     public Transcation_Service(User user){
         this.user=user;
     }
@@ -37,33 +43,33 @@ public class Transcation_Service
         }
     }
 
-    void WalletTransfer(){
+    void WalletTransfer() {
         transferController = new WalletTransferController();
         System.out.print("Please enter the mobile number: ");
         String mobileNumber = InstapayView.TakeInput(String.class, "" , "");
         System.out.print("Please enter the amount: ");
         double amount = InstapayView.TakeInput(Double.class, "" , "");
-        if (transferController.Transfer(user , mobileNumber , amount)) {
+        if (transferController.Transfer(user.getAccount() , mobileNumber , amount)) {
             System.out.println("Transfer completed successfully");
         }
-    }
+     }
     void InstapayTransfer(){
         transferController = new InstapayTransferController();
         System.out.print("Please enter the instapay account number : ");
         String accountNumber = InstapayView.TakeInput(String.class, "" , "");
         System.out.print("Please enter the amount: ");
         double amount = InstapayView.TakeInput(Double.class, "" , "");
-        if (transferController.Transfer(user , accountNumber , amount)) {
+        if (transferController.Transfer(user.getAccount() , accountNumber , amount)) {
             System.out.println("Transfer completed successfully");
         }
     }
     void  PayBill(){
-        BillProvider billProvider=BillSelection();
+        BillProvider billProvider = BillSelection();
         if(billProvider==null){
             return;
         }
         System.out.println("Please Enter the Id");
-        int billId = InstapayView.TakeInput(Integer.class , "" ,"Invalid Id");
+        int billId = Main.InstapayUtilites.TakeInput(Integer.class , "" ,"Invalid Id");
         Bill bill=billProvider.GetBill(billId);
         if(bill!=null){
             if(bill.isPaid()){
@@ -73,8 +79,8 @@ public class Transcation_Service
                 System.out.println("Do you Want To Pay ");
                 System.out.println("1. Yes");
                 System.out.println("2. No");
-                int choice= InstapayView.TakeInput(Integer.class , "","Invalid choice");
-                if(choice==1){
+                int choice = Main.InstapayUtilites.TakeInput(Integer.class , "","Invalid choice");
+                if(choice == 1){
                     //reduce the amount from the wallet
                     if(user.getAccount().getAmount()>=bill.getTotalAmount()){
                         user.getAccount().getProvider().Withdraw(user.getAccount(),bill.getTotalAmount());
@@ -86,7 +92,7 @@ public class Transcation_Service
                         System.out.println("You Havent Sufficient Money to Pay");
                     }
 
-                }else if(choice==2){
+                }else if(choice == 2){
                     return;
                 }else{
                     System.out.println("Invalid Input");
@@ -108,7 +114,7 @@ public class Transcation_Service
         System.out.print("Please select an option [0 - "+ billProvidersFactoryArray.size() +"]: ");
 
         while (true){
-            int choice = InstapayView.TakeInput(Integer.class , "","" );
+            int choice = Main.InstapayUtilites.TakeInput(Integer.class , "","" );
             if (choice == 0) {
                 return  null;
             }
@@ -128,7 +134,7 @@ public class Transcation_Service
         String accountNumber = Main.InstapayUtilites.TakeInput(String.class, "" , "");
         System.out.print("Please enter the amount: ");
         double amount = Main.InstapayUtilites.TakeInput(Double.class, "" , "");
-        if (transferController.Transfer(user , accountNumber , amount)) {
+        if (transferController.Transfer(user.getAccount() , accountNumber , amount)) {
             System.out.println("Transfer completed successfully");
         }
     }

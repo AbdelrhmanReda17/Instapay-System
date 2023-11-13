@@ -35,32 +35,24 @@ public class FawryProvider extends WalletProvider {
         }
         return null;
     }
-
-    public Account Deposit(Account account, double ammount) {
+    @Override
+    public void Deposit(Account account, double ammount) {
         //Deposit should differ from each api to another but we don't have this option
         //so we chose to duplicate.
-        if (account instanceof WalletAccount) {
-            Account updatedAccount = new WalletAccount(account.getPhoneNumber(),
-                 account.getAmount() + ammount, this,((WalletAccount)account).getWalletID());
-            return updatedAccount;
-        } else {
-            return null;
-        }
+        double currentAmount = account.getAmount();
+        account.setAmount(currentAmount + ammount);
     }
-
-    public Account Withdraw(Account account, double ammount) {
+    @Override
+    public boolean Withdraw(Account account, double ammount) {
         //Withdraw should differ from each api to another but we don't have this option
         //so we chose to duplicate.
-        if ( account instanceof WalletAccount) {
-            if (account.getAmount() >= ammount) {
-                Account updatedAccount = new WalletAccount(account.getPhoneNumber(),
-                     account.getAmount() - ammount, this,((WalletAccount)account).getWalletID());
-                return updatedAccount;
-            } else {
-                return null;
-            }
+        double currentAmount = account.getAmount();
+        if (currentAmount >= ammount) {
+            account.setAmount(currentAmount - ammount);
+            return true;
         } else {
-            return null;
+            return false;
+
         }
     }
 }

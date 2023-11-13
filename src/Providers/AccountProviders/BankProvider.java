@@ -2,7 +2,7 @@ package Providers.AccountProviders;
 import User.model.Account;
 import java.util.Random;
 
-public abstract class BankProvider implements IProvider {
+public abstract class BankProvider extends IProvider {
 
     public static String generateOTP() {
         Random random = new Random();

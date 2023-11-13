@@ -12,7 +12,6 @@ public class QNBProvider extends BankProvider {
     private Account updatedAccount;
     private final String AccountsFilePath = "src\\Database\\QNBAccounts.csv";
     @Override
-
     public Account getAccount(String AccountId) {
         try (BufferedReader reader = new BufferedReader(new FileReader(AccountsFilePath))) {
             reader.readLine();
@@ -39,32 +38,24 @@ public class QNBProvider extends BankProvider {
         return null;
     }
 
-    
-    public Account Deposit(Account account, double ammount) {
+    @Override
+    public void Deposit(Account account, double ammount) {
         //Deposit should differ from each api to another but we don't have this option
         //so we chose to duplicate.
-        if (account instanceof BankAccount) {
-            updatedAccount = new BankAccount(((BankAccount)account).getAccountID(),
-                                account.getAmount() + ammount, this, account.getPhoneNumber());
-            return updatedAccount;
-        } else {
-            return null;
-        }
+        double currentAmount = account.getAmount();
+        account.setAmount(currentAmount + ammount);
     }
-
-    public Account Withdraw(Account account, double ammount) {
+    @Override
+    public boolean Withdraw(Account account, double ammount) {
         //Withdraw should differ from each api to another but we don't have this option
         //so we chose to duplicate.
-        if (account instanceof BankAccount) {
-            if (account.getAmount() >= ammount) {
-                updatedAccount = new BankAccount(((BankAccount)account).getAccountID(),
-                                account.getAmount() - ammount, this, account.getPhoneNumber());
-                return updatedAccount;
-            } else {
-                return null;
-            }
+        double currentAmount = account.getAmount();
+        if (currentAmount >= ammount) {
+            account.setAmount(currentAmount - ammount);
+            return true;
         } else {
-            return null;
+            return false;
+
         }
     }
 }
