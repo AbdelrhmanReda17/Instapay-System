@@ -19,7 +19,7 @@ public class CIBProvider extends BankProvider {
                 String[] columns = line.split(",");
                 if(columns.length != 4) continue;
                 if(!columns[0].equals(AccountId)) continue;
-                return new BankAccount(columns[0],Double.parseDouble(columns[1]), this , columns[2]);
+                return new BankAccount(columns[0],Double.parseDouble(columns[2]), this , columns[3]);
             }
         }catch (Exception e) {
             throw new RuntimeException(e);
@@ -38,7 +38,7 @@ public class CIBProvider extends BankProvider {
     public Account Deposit(Account account, double ammount) {
         //Deposit should differ from each api to another but we don't have this option
         //so we chose to duplicate.
-        if (account != null && account instanceof BankAccount) {
+        if (account instanceof BankAccount) {
             Account updatedAccount = new BankAccount(((BankAccount)account).getAccountID(),
                                 account.getAmount() + ammount, this, account.getPhoneNumber());
             return updatedAccount;
@@ -50,7 +50,7 @@ public class CIBProvider extends BankProvider {
     public Account Withdraw(Account account, double ammount) {
         //Withdraw should differ from each api to another but we don't have this option
         //so we chose to duplicate.
-        if (account != null && account instanceof BankAccount) {
+        if (account instanceof BankAccount) {
             if (account.getAmount() >= ammount) {
                 Account updatedAccount = new BankAccount(((BankAccount)account).getAccountID(),
                                 account.getAmount() - ammount, this, account.getPhoneNumber());
