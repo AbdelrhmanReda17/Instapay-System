@@ -7,6 +7,8 @@ import Providers.BillProviders.BillProvider;
 import User.User ;
 import User.BankAccount;
 
+import java.util.Set;
+
 public class InstapayFacade {
     public UserFacade userFacade;
     public User user;
@@ -47,7 +49,7 @@ public class InstapayFacade {
 //                    WalletTransfer();
                     break;
                 case 2:
-//                    PayBill();
+                    PayBill();
                     break;
                 case 3:
                   WalletTransfer();
@@ -70,7 +72,7 @@ public class InstapayFacade {
     }
 
     void WalletTransfer(){
-        transferController = new Controllers.WalletTransfer();
+        transferController = new Controllers.WalletTransferController();
         System.out.print("Please enter the mobile number: ");
         String mobileNumber = FacadeSingleton.TakeInput(String.class, "");
         System.out.print("Please enter the amount: ");
@@ -88,19 +90,66 @@ public class InstapayFacade {
             System.out.println("Transfer completed successfully");
         }
     }
-    void PayPill(){
-        System.out.println("1. Gas Bill");
-        System.out.println("2. Electricity Bill");
-        System.out.println("3. Water Bill");
-        int choice = FacadeSingleton.TakeInput(Integer.class, "");
-        switch (choice){
-            case 0:
+    void  PayBill(){
+        BillProvider billProvider=BillSelection();
+        if(billProvider==null){
+            return;
+        }
+        System.out.println("Please Enter the Id");
+        int billId = FacadeSingleton.TakeInput(Integer.class , "" );
+        Bill bill=billProvider.GetBill(billId);
+        if(bill!=null){
+            if(bill.isPaid()){
+                System.out.println("Paid");
+            }else{
+                bill.PrintBillDetails();
+                System.out.println("Do you Want To Pay ");
+                System.out.println("1. Yes");
+                System.out.println("2. No");
+                int choice=FacadeSingleton.TakeInput(Integer.class , "");
+                if(choice==1){
+                    //reduce the amount from the wallet
+                    if(user.getAccount().getAmount()>=bill.getTotalAmount()){
+                        user.getAccount().Withdraw(bill.getTotalAmount());
+                        bill.setPaid(true);
+                        billProvider.PayBill(bill);
+                    }else{
+                        System.out.println("You Havent Sufficient Money to Pay");
+                    }
+
+                }else if(choice==2){
+                    return;
+                }else{
+                    System.out.println("Invalid Input");
+                }
+            }
+        }else{
+            return;
         }
 
-        BillProvider provider= BillProvidersFactory.CreateBillProvider(choice);
-        Bill bill=
+    }
+     BillProvider BillSelection(){
+        System.out.println("Please Select your Bill To Pay : ");
+        BillProvidersFactory billProvidersFactory=new BillProvidersFactory();
+        Set<String> billProvidersFactoryArray = billProvidersFactory.GetBillProviders();
+        for (int i = 1; i < billProvidersFactoryArray.size() + 1; i++){
+            System.out.println(i + ". " + billProvidersFactoryArray.toArray()[i - 1]);
+        }
+        System.out.println("0. Exit");
+        System.out.print("Please select an option [0 - "+ billProvidersFactoryArray.size() +"]: ");
 
-
+        while (true){
+            int choice = FacadeSingleton.TakeInput(Integer.class , "" );
+            if (choice == 0) {
+                return  null;
+            }
+            else if (choice > 0 && choice <= billProvidersFactoryArray.size()) {
+                return BillProvidersFactory.CreateBillProvider(billProvidersFactoryArray.toArray()[choice - 1].toString());
+            }
+            else {
+                System.out.println("Invalid input, please enter a number between [0 - "+ billProvidersFactoryArray.size() +"]: ");
+            }
+        }
 
     }
 

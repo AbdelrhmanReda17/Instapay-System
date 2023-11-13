@@ -1,22 +1,38 @@
 package Factories;
 
 
+
 import Providers.BillProviders.BillProvider;
 import Providers.BillProviders.ElectricityProvider;
 import Providers.BillProviders.GasProvider;
 import Providers.BillProviders.WaterProvider;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Function;
+
 public class BillProvidersFactory {
+    private static Map<String , Function<Void, BillProvider>> BillProviders = new HashMap<>();
+    public BillProvidersFactory() {
+        BillProviders.put("Gas",billProvider->{
+            return new GasProvider();
+        });
 
-        public static BillProvider CreateBillProvider(String type){
-            return switch (type) {
-                case "Gas" -> new GasProvider();
-                case "Water" -> new WaterProvider();
-                case "Electricity" -> new ElectricityProvider();
+        BillProviders.put("Electricity",billProvider->{
+            return new ElectricityProvider();
+        });
+        BillProviders.put("Water",billProvider->{
+            return new WaterProvider();
+        });
 
-                default -> null;
-            };
+    }
 
-        }
+    public static   BillProvider CreateBillProvider(String type){
+        return BillProviders.get(type).apply(null);
+    }
+    public Set<String> GetBillProviders() {
+        return BillProviders.keySet();
+    }
 
 }
