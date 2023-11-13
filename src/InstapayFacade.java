@@ -1,9 +1,12 @@
+import Bills.Bill;
 import Controllers.BankTransferController;
 import Controllers.InstapayTransferController;
 import Controllers.TransferController;
 import Controllers.WalletTransferController;
 import FacadeCollection.FacadeSingleton;
 import FacadeCollection.UserFacade;
+import Factories.BillProvidersFactory;
+import Providers.BillProviders.BillProvider;
 import User.User ;
 import User.BankAccount;
 
@@ -97,7 +100,7 @@ public class InstapayFacade {
             return;
         }
         System.out.println("Please Enter the Id");
-        int billId = FacadeSingleton.TakeInput(Integer.class , "" );
+        int billId = FacadeSingleton.TakeInput(Integer.class , "" ,"Invalid Id");
         Bill bill=billProvider.GetBill(billId);
         if(bill!=null){
             if(bill.isPaid()){
@@ -107,11 +110,11 @@ public class InstapayFacade {
                 System.out.println("Do you Want To Pay ");
                 System.out.println("1. Yes");
                 System.out.println("2. No");
-                int choice=FacadeSingleton.TakeInput(Integer.class , "");
+                int choice=FacadeSingleton.TakeInput(Integer.class , "","Invalid choice");
                 if(choice==1){
                     //reduce the amount from the wallet
                     if(user.getAccount().getAmount()>=bill.getTotalAmount()){
-                        user.getAccount().Withdraw(bill.getTotalAmount());
+                        user.getAccount().getProvider().Withdraw(user.getAccount(),bill.getTotalAmount());
                         bill.setPaid(true);
                         billProvider.PayBill(bill);
                     }else{
@@ -140,7 +143,7 @@ public class InstapayFacade {
         System.out.print("Please select an option [0 - "+ billProvidersFactoryArray.size() +"]: ");
 
         while (true){
-            int choice = FacadeSingleton.TakeInput(Integer.class , "" );
+            int choice = FacadeSingleton.TakeInput(Integer.class , "","" );
             if (choice == 0) {
                 return  null;
             }
