@@ -15,6 +15,11 @@ public class WalletAccount extends Account {
     public String getPhoneNumber() {
         return phoneNumber;
     }
+
+    public String getWalletID() {
+        return walletID;
+    }
+
     public void Display() {
         System.out.println("Wallet ID: " + this.walletID);
         System.out.println("Wallet Phone Number: " + this.phoneNumber);

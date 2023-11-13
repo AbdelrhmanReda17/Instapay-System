@@ -2,6 +2,8 @@ package Providers.AccountProviders.Wallets;
 
 import Providers.AccountProviders.WalletProvider;
 import User.Account;
+import User.BankAccount;
+import User.WalletAccount;
 import User.WalletAccount;
 
 import java.io.BufferedReader;
@@ -30,8 +32,34 @@ public class VodafoneProvider extends WalletProvider {
     public String getName() {
         return Name;
     }
-    @Override
-    public Account UpdateHandler() {
+    public Account Update() {
         return null;
+    }
+
+    
+    public Account Deposit(Account account, double ammount) {
+        //Deposit should differ from each api to another but we don't have this option
+        //so we chose to duplicate.
+        if (account != null && account instanceof WalletAccount) {
+            Account updatedAccount = new WalletAccount(account.getPhoneNumber(), account.getAmount() + ammount, this,((WalletAccount)account).getWalletID());
+            return updatedAccount;
+        } else {
+            return null;
+        }
+    }
+
+    public Account Withdraw(Account account, double ammount) {
+        //Withdraw should differ from each api to another but we don't have this option
+        //so we chose to duplicate.
+        if (account != null && account instanceof WalletAccount) {
+            if (account.getAmount() >= ammount) {
+                Account updatedAccount = new WalletAccount(account.getPhoneNumber(), account.getAmount() - ammount, this,((WalletAccount)account).getWalletID());
+                return updatedAccount;
+            } else {
+                return null;
+            }
+        } else {
+            return null;
+        }
     }
 }

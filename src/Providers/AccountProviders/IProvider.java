@@ -4,7 +4,10 @@ import User.Account;
 
 public interface IProvider {
     public int Verify(String data);
-    public void Update();
+    public Account Update();
     public String getName();
     public Account getAccount(String token);
+
+    public Account Deposit(Account account, double ammount);
+    public Account Withdraw(Account account, double ammount);
 }

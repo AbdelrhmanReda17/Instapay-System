@@ -1,4 +1,7 @@
+import Controllers.BankTransferController;
+import Controllers.InstapayTransferController;
 import Controllers.TransferController;
+import Controllers.WalletTransferController;
 import FacadeCollection.FacadeSingleton;
 import FacadeCollection.UserFacade;
 import User.User ;
@@ -67,6 +70,7 @@ public class InstapayFacade {
     }
 
     void WalletTransfer(){
+        transferController = new WalletTransferController();
         System.out.print("Please enter the mobile number: ");
         String mobileNumber = FacadeSingleton.TakeInput(String.class, "" , "");
         System.out.print("Please enter the amount: ");
@@ -76,6 +80,7 @@ public class InstapayFacade {
         }
     }
     void InstapayTransfer(){
+        transferController = new InstapayTransferController();
         System.out.print("Please enter the instapay account number : ");
         String accountNumber = FacadeSingleton.TakeInput(String.class, "" , "");
         System.out.print("Please enter the amount: ");
@@ -95,6 +100,7 @@ public class InstapayFacade {
     }
 
     void BankTransfer(){
+        transferController = new BankTransferController();
         System.out.print("Please enter the account number number: ");
         String accountNumber = FacadeSingleton.TakeInput(String.class, "" , "");
         System.out.print("Please enter the amount: ");

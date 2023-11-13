@@ -25,8 +25,9 @@ public abstract class TransferController {
             return false;
         }
 
-        if (distAccount.Withdraw(ammount)) {
-            srcAccount.Deposit(ammount);
+        srcAccount = srcAccount.getProvider().Withdraw(srcAccount, ammount);
+        if (srcAccount != null) {
+            distAccount = distAccount.getProvider().Deposit(distAccount, ammount);
             return true;
         }
         else {

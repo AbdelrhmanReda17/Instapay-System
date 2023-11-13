@@ -99,7 +99,7 @@ public class RegistrationFacade {
                 return null;
             }
             System.out.println("Account Verified Successfully");
-            if(getUser()){
+            if(getUserDetails()){
                 user.setUserID(dataController.getMaxID() + 1);
                 dataController.SaveData(user);
                 return user;
@@ -108,7 +108,7 @@ public class RegistrationFacade {
             }
         }
    }
-   public boolean getUser(){
+   public boolean getUserDetails(){
         while(true){
             System.out.println("Please enter your username - Exit to close : ");
             String username = FacadeSingleton.TakeInput(String.class  , "^[a-zA-Z0-9_\\.]{3,20}$" , "Username must be between 3 and 20 characters long and can only contain letters, numbers, underscores and dots." );
