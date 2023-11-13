@@ -1,16 +1,14 @@
 package Transaction_Service.Controllers;
 
-import Model.AccountsManger;
+import InstapayDatabase.DataManager;
 import Providers.AccountProviders.IProvider;
-import User.model.Account;
-import User.model.BankAccount;
-import User.model.User;
-import User.model.WalletAccount;
+import Entities.User.Account;
+import Entities.User.User;
 
 public abstract class TransferController {
     protected IProvider provider;
     private TransferValidator validator = new WalletToBankValidator();
-    protected AccountsManger accountsManger = new AccountsManger();
+    protected DataManager accountsManger = new DataManager();
 
     public abstract User ParseUserData(String userData);
 

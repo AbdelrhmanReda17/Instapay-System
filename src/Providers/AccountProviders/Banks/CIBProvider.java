@@ -1,14 +1,14 @@
 package Providers.AccountProviders.Banks;
 
 import Providers.AccountProviders.BankProvider;
-import User.model.Account;
-import User.model.BankAccount;
+import Entities.User.Account;
+import Entities.User.BankAccount;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 
 public class CIBProvider extends BankProvider {
-    private final String AccountsFilePath = "src\\Database\\CIBAccounts.csv";
+    private final String AccountsFilePath = "src\\InstapayDatabase\\Database\\CIBAccounts.csv";
     private final String Name = "CIB";
     @Override
     public Account getAccount(String AccountId) {

@@ -4,13 +4,13 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 
 import Providers.AccountProviders.BankProvider;
-import User.model.Account;
-import User.model.BankAccount;
+import Entities.User.Account;
+import Entities.User.BankAccount;
 
 public class QNBProvider extends BankProvider {
     private final String Name = "QNB";
     private Account updatedAccount;
-    private final String AccountsFilePath = "src\\Database\\QNBAccounts.csv";
+    private final String AccountsFilePath = "src\\InstapayDatabase\\Database\\QNBAccounts.csv";
     @Override
     public Account getAccount(String AccountId) {
         try (BufferedReader reader = new BufferedReader(new FileReader(AccountsFilePath))) {

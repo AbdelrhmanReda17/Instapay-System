@@ -2,12 +2,10 @@ package Transaction_Service.Controllers;
 
 import java.util.Set;
 
-import Istapay_interface.view.InstapayView;
-import Main.Main;
-import Main.InstapayUtilites;
+import InstapayApplication.Utilites.InstapayUtilites;
 import Providers.BillProviders.BillProvider;
-import User.model.User;
-import Transaction_Service.Bills.Bill;
+import Entities.User.User;
+import Entities.Bills.Bill;
 import Transaction_Service.view.transactionsView;
 public class Transcation_Service
 {

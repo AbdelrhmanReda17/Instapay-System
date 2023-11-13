@@ -1,9 +1,9 @@
 package Providers;
 
 import Providers.AccountProviders.IProvider;
-import Registeration_service.Factories.BankFactory;
-import Registeration_service.Factories.WalletFactory;
-import User.model.Account;
+import Entities.User.Factories.BankFactory;
+import Entities.User.Factories.WalletFactory;
+import Entities.User.Account;
 
 public class ProviderFactory {
 

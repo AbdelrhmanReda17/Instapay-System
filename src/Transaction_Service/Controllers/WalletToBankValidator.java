@@ -1,8 +1,8 @@
 package Transaction_Service.Controllers;
 
-import User.model.Account;
-import User.model.BankAccount;
-import User.model.WalletAccount;
+import Entities.User.Account;
+import Entities.User.BankAccount;
+import Entities.User.WalletAccount;
 
 /**
  * WalletToBankValidator

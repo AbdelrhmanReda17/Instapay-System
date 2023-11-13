@@ -1,10 +1,9 @@
 package Transaction_Service.view;
 
-import User.model.User;
+import Entities.User.User;
 
 public class transactionsView {
-
-    public static int transactionsMenu(User user){ return user.UserMenu();
-
+    public static int transactionsMenu(User user){
+        return user.UserMenu();
     }
 }

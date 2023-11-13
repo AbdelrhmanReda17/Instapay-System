@@ -1,15 +1,15 @@
 package Providers.AccountProviders.Wallets;
 
 import Providers.AccountProviders.WalletProvider;
-import User.model.Account;
-import User.model.WalletAccount;
+import Entities.User.Account;
+import Entities.User.WalletAccount;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 
 public class FawryProvider extends WalletProvider {
     private final String Name = "Fawry";
-    private final String AccountsFilePath = "src\\Database\\FawryAccounts.csv";
+    private final String AccountsFilePath = "src\\InstapayDatabase\\Database\\FawryAccounts.csv";
     public Account Update() {
         return null;
     }

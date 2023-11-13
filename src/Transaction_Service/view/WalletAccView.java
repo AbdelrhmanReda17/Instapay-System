@@ -1,5 +1,7 @@
 package Transaction_Service.view;
 
+import InstapayApplication.Utilites.InstapayUtilites;
+
 public class WalletAccView implements TransactionMenu {
 
     public int ViewMenu(){
@@ -9,6 +11,6 @@ public class WalletAccView implements TransactionMenu {
         System.out.println("4. Transfer to Another instapay account");
         System.out.println("0. Log out");
         System.out.print("Please select an option [0 - 4]: ");
-        return Main.InstapayUtilites.TakeInput(Integer.class, "[0-4]" , "");
+        return InstapayUtilites.TakeInput(Integer.class, "[0-4]" , "");
     }
 }

@@ -1,6 +1,6 @@
 package Transaction_Service.Controllers;
 
-import User.model.User;
+import Entities.User.User;
 
 public class InstapayTransferController extends TransferController {
 

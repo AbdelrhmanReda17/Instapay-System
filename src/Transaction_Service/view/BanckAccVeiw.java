@@ -1,6 +1,8 @@
 package Transaction_Service.view;
 
 
+import InstapayApplication.Utilites.InstapayUtilites;
+
 public class BanckAccVeiw  implements TransactionMenu {
     public int ViewMenu(){
         System.out.println("1. Inquire about his balance");
@@ -10,6 +12,6 @@ public class BanckAccVeiw  implements TransactionMenu {
         System.out.println("5. Transfer to Bank Account");
         System.out.println("0. Log out");
         System.out.print("Please select an option [0 - 4]: ");
-        return   Main.InstapayUtilites.TakeInput(Integer.class, "[0-5]" , "");
+        return   InstapayUtilites.TakeInput(Integer.class, "[0-5]" , "");
     }
 }

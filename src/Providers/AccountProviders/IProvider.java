@@ -1,6 +1,6 @@
 package Providers.AccountProviders;
 
-import User.model.Account;
+import Entities.User.Account;
 
 public abstract class IProvider {
     public abstract int Verify(String data);

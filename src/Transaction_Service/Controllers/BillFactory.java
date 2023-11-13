@@ -1,10 +1,10 @@
 package Transaction_Service.Controllers;
 
 
-import Transaction_Service.Bills.Bill;
-import Transaction_Service.Bills.ElectricityBills;
-import Transaction_Service.Bills.GasBills;
-import Transaction_Service.Bills.WaterBills;
+import Entities.Bills.Bill;
+import Entities.Bills.ElectricityBills;
+import Entities.Bills.GasBills;
+import Entities.Bills.WaterBills;
 
 public class BillFactory {
     public static Bill CreateBill(String type){
