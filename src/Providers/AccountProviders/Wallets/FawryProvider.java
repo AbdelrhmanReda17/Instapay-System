@@ -40,7 +40,7 @@ public class FawryProvider extends WalletProvider {
     public Account Deposit(Account account, double ammount) {
         //Deposit should differ from each api to another but we don't have this option
         //so we chose to duplicate.
-        if (account != null && account instanceof WalletAccount) {
+        if (account instanceof WalletAccount) {
             Account updatedAccount = new WalletAccount(account.getPhoneNumber(),
                  account.getAmount() + ammount, this,((WalletAccount)account).getWalletID());
             return updatedAccount;
@@ -52,7 +52,7 @@ public class FawryProvider extends WalletProvider {
     public Account Withdraw(Account account, double ammount) {
         //Withdraw should differ from each api to another but we don't have this option
         //so we chose to duplicate.
-        if (account != null && account instanceof WalletAccount) {
+        if ( account instanceof WalletAccount) {
             if (account.getAmount() >= ammount) {
                 Account updatedAccount = new WalletAccount(account.getPhoneNumber(),
                      account.getAmount() - ammount, this,((WalletAccount)account).getWalletID());

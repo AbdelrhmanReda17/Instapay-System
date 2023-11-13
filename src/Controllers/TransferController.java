@@ -10,12 +10,8 @@ public abstract class TransferController {
                return false;
            }
            
-           if (TransferHandler(srcAccount.getAccount(), distAccount.getAccount(), ammount)) {
-               return true;
-           }
-           else {
-            return false;
-           }
+           return TransferHandler(srcAccount.getAccount(), distAccount.getAccount(), ammount);
+
     }
 
     public abstract User ParseUserData(String userData);

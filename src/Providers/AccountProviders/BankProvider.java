@@ -3,6 +3,7 @@ import User.Account;
 import java.util.Random;
 
 public abstract class BankProvider implements IProvider {
+
     public static String generateOTP() {
         Random random = new Random();
         StringBuilder otp = new StringBuilder();
