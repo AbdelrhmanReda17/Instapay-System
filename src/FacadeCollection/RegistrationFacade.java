@@ -24,7 +24,7 @@ public class RegistrationFacade {
             System.out.println("2. Register by Wallet ");
             System.out.println("0. Exit ");
             System.out.print("Please select an option [0 - 2]: ");
-            int choice = FacadeSingleton.TakeInput(Integer.class , "" );
+            int choice = FacadeSingleton.TakeInput(Integer.class , "" , "" );
             switch (choice) {
                 case 1:
                     user = BankRegistration();
@@ -59,7 +59,7 @@ public class RegistrationFacade {
         System.out.println("0. Exit");
         System.out.print("Please select an option [0 - "+ bankFactoryArray.size() +"]: ");
         while (true){
-           int choice = FacadeSingleton.TakeInput(Integer.class , "" );
+           int choice = FacadeSingleton.TakeInput(Integer.class , "" , "" );
             if (choice == 0) {
                 return null;
             }
@@ -78,7 +78,7 @@ public class RegistrationFacade {
                 return null;
             }
             System.out.print("Please enter your Bank Account Number - Exit to close : ");
-            String bankId = FacadeSingleton.TakeInput(String.class  , "" );
+            String bankId = FacadeSingleton.TakeInput(String.class  , "" , "" );
             int OTP =  provider.Verify(bankId);
             if(OTP == -1){
                 System.out.println("Invalid Account Number , Please try again");
@@ -87,11 +87,11 @@ public class RegistrationFacade {
             user.setUserType(provider.getAccount(bankId));
             System.out.println("23ml nfsk el OTP GALK W HOWA [ " + OTP + " ] ");
             System.out.print("Please enter the OTP sent to your mobile number : ");
-            int userOTP = FacadeSingleton.TakeInput(Integer.class  , "" );
+            int userOTP = FacadeSingleton.TakeInput(Integer.class  , "" , "");
             int counter = 1;
             while (userOTP != OTP && counter < 3 ){
                 System.out.print("OTP is incorrect. You have " + (3 - counter) + " attempts left: ");
-                userOTP = FacadeSingleton.TakeInput(Integer.class  , "" );
+                userOTP = FacadeSingleton.TakeInput(Integer.class  , "" , "" );
                 counter++;
             }
             if(counter == 3 && userOTP != OTP){
@@ -99,7 +99,7 @@ public class RegistrationFacade {
                 return null;
             }
             System.out.println("Account Verified Successfully");
-            if(getUser()){
+            if(getUserDetails()){
                 user.setUserID(dataController.getMaxID() + 1);
                 dataController.SaveData(user);
                 return user;
@@ -108,20 +108,26 @@ public class RegistrationFacade {
             }
         }
    }
-   public boolean getUser(){
-        System.out.println("Please enter your username - Exit to close : ");
-        String username = FacadeSingleton.TakeInput(String.class  , "^[a-zA-Z0-9_\\.]{3,20}$" );
-        if(username.equals("Exit")){
-            return false;
+   public boolean getUserDetails(){
+        while(true){
+            System.out.println("Please enter your username - Exit to close : ");
+            String username = FacadeSingleton.TakeInput(String.class  , "^[a-zA-Z0-9_\\.]{3,20}$" , "Username must be between 3 and 20 characters long and can only contain letters, numbers, underscores and dots." );
+            if(!dataController.checkUsername(username)){
+                System.out.println("Username already exists , Please try again");
+                continue;
+            }
+            if(username.equals("Exit")){
+                return false;
+            }
+            System.out.println("Please enter your password - Exit to close : ");
+            String password = FacadeSingleton.TakeInput(String.class  , "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=!]).{8,}$" , "Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one digit and one special character." );
+            if(password.equals("Exit")){
+                return false;
+            }
+            user.setUsername(username);
+            user.setPassword(password);
+            return true;
         }
-        System.out.println("Please enter your password - Exit to close : ");
-        String password = FacadeSingleton.TakeInput(String.class  , "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=!]).{8,}$" );
-        if(password.equals("Exit")){
-            return false;
-        }
-        user.setUsername(username);
-        user.setPassword(password);
-        return true;
    }
 
     public User WalletRegistration(){

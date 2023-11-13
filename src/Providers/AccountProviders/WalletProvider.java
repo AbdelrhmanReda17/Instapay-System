@@ -8,12 +8,4 @@ public abstract class WalletProvider implements IProvider {
     public int Verify(String phone ){
         return 0;
     }
-
-    @Override
-    public void Update() {
-
-    }
-
-    abstract public Account getAccount(String AccountId);
-    abstract public Account UpdateHandler();
 }

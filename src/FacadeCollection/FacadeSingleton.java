@@ -11,7 +11,7 @@ public class FacadeSingleton {
 
     private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-    public static <T> T TakeInput(Class<T> type, String regexPattern) {
+    public static <T> T TakeInput(Class<T> type, String regexPattern , String message) {
         T choice = null;
         boolean isValidInput = false;
 
@@ -23,7 +23,7 @@ public class FacadeSingleton {
                             choice = type.cast(input);
                             isValidInput = true;
                         } else {
-                            System.out.println("your input is not supported or not strong enough, please try again:");
+                            System.out.println(message);
                         }
                     } else if (type.equals(Integer.class)) {
                         choice = type.cast(Integer.parseInt(reader.readLine()));
