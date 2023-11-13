@@ -1,4 +1,4 @@
-package RegisterationService.Controllers;
+package RegisterationService.Controllers.AccountRegistration;
 
 import InstapayApplication.Utilites.InstapayUtilites;
 import Providers.AccountProviders.IProvider;
@@ -6,16 +6,15 @@ import RegisterationService.Views.RegisterView;
 
 public class Authentication {
     public static String Verify(IProvider provider){
-        System.out.print("Please enter your Bank Account Number - Exit to close : ");
+        String name = provider.getName();
+        System.out.print("Please enter your "+ name +" Number - Exit to close : ");
         String bankId = InstapayUtilites.TakeInput(String.class , "" , "" );
         int OTP = provider.Verify(bankId);
         if(OTP == -1) {
-            System.out.println("Invalid Bank Account Number or Bank Account is not registered " + provider.getName() + ". ");
+            System.out.println("Invalid " + provider.getName() +" Number or " + provider.getName() + "is not registered. ");
             return null;
         }
-        if(RegisterView.VerfiyView(OTP,3)){
-            return bankId;
-        }
+        if(RegisterView.VerfiyView(OTP,3)) return bankId;
         return null;
     }
 }

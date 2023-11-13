@@ -17,7 +17,6 @@ public class ProviderFactory {
 
     public String getProviderType(Account account) {
         String type = account.getClass().getName();
-        System.out.println(type);
         return switch (type) {
             case "BankAccount" -> "Bank";
             case "WalletAccount" -> "Wallet";

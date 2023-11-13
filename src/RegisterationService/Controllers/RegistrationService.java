@@ -1,13 +1,10 @@
 package RegisterationService.Controllers;
 
 
-import java.util.Set;
-
+import Entities.User.Account;
 import InstapayApplication.Utilites.InstapayUtilites;
 import InstapayDatabase.DataManager;
-import Entities.User.Factories.BankFactory;
 import RegisterationService.Views.RegisterView;
-import Providers.AccountProviders.IProvider;
 import Entities.User.User;
 
 public class RegistrationService {
@@ -21,29 +18,15 @@ public class RegistrationService {
         while(true) {
             InstapayUtilites.Splitter();
             int choice = RegisterView.RegisterMenu();
-            switch (choice) {
-                case 1:
-                    user = BankRegistration();
-                    if(user != null) return user;
-                    break;
-                case 2:
-                    user = WalletRegistration();
-                    if(user != null) return user;
-                    break;
-                case 0:
-                    return null;
-                default:
-                    break;
-            }
+            if(choice == 0) return null;
+            Account account = RegistrationFactory.createRegistration(choice);
+            if(account == null) continue;
+            return Registration(account);
         }
     }
-    public User BankRegistration(){
+    public User Registration(Account Account){
+        user.setUserType(Account);
         while (true){
-            IProvider provider = BankSelection();
-            if(provider == null) return null;
-            String bankId = Authentication.Verify(provider);
-            if(bankId == null) continue;
-            user.setUserType(provider.getAccount(bankId));
             if(getUserDetails()){
                 user.setUserID(accountsManger.getMaxID() + 1);
                 accountsManger.SaveData(user);
@@ -51,15 +34,6 @@ public class RegistrationService {
             }
             return null;
         }
-    }
-   public IProvider BankSelection(){
-        BankFactory bankFactory = new BankFactory();
-        Set<String> bankFactoryArray = bankFactory.GetBankProviders();
-           int choice = RegisterView.BanksMenu(bankFactoryArray);
-            if (choice == 0) {
-                return null;
-            }
-            return bankFactory.CreateBank(bankFactoryArray.toArray()[choice - 1].toString());
     }
    public boolean getUserDetails(){
        while(true){
@@ -80,7 +54,4 @@ public class RegistrationService {
            return true;
        }
    }
-    public User WalletRegistration(){
-        return new User();
-    }
 }

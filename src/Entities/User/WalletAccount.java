@@ -25,6 +25,6 @@ public class WalletAccount extends Account {
         System.out.println("Wallet Phone Number: " + this.phoneNumber);
     }
     public String getData(){
-        return "Wallet" + "-" + getProvider().toString() + "," + walletID;
+        return "Wallet" + "-" + getProvider().getName() + "," + phoneNumber;
     }
 }

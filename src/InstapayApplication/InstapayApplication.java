@@ -24,6 +24,7 @@ public class InstapayApplication {
                 case 1:
                     user = LoginService.Login();
                     if (user != null) {
+                        System.out.println("You have successfully logged in");
                         Transcation_Service trans = new Transcation_Service(user);
                         //trans.TranscationMenu();
                     }
@@ -32,6 +33,7 @@ public class InstapayApplication {
                     RegistrationService register = new RegistrationService();
                     user = register.Register();
                     if (user != null) {
+                        System.out.println("You have successfully registered");
                         Transcation_Service trans= new Transcation_Service(user);
                         //trans.TranscationMenu();
                     }

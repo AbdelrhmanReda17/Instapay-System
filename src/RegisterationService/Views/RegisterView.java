@@ -13,14 +13,14 @@ public class RegisterView {
         return InstapayUtilites.TakeInput(Integer.class , "[0-2]" , "" );
     }
 
-    public static int BanksMenu(Set<String> bankFactoryArray){
-        System.out.println("Please Select your Bank : ");
-        for (int i = 1; i < bankFactoryArray.size() + 1; i++){
-            System.out.println(i + ". " + bankFactoryArray.toArray()[i - 1]);
+    public static int ProviderMenu(Set<String> Array){
+        System.out.println("Please Select your provider : ");
+        for (int i = 1; i < Array.size() + 1; i++){
+            System.out.println(i + ". " + Array.toArray()[i - 1]);
         }
         System.out.println("0. Exit");
-        System.out.print("Please select an option [0 - "+ bankFactoryArray.size() +"]: ");
-        return InstapayUtilites.TakeInput(Integer.class , "[0-"+bankFactoryArray.size()+"]" , "Invalid input, please enter a number between [0 - "+ bankFactoryArray.size() +"]: " );
+        System.out.print("Please select an option [0 - "+ Array.size() +"]: ");
+        return InstapayUtilites.TakeInput(Integer.class , "[0-"+Array.size()+"]" , "Invalid input, please enter a number between [0 - "+ Array.size() +"]: " );
     }
     public static boolean VerfiyView(int OTP,int counter){
         System.out.println("23ml nfsk el OTP GALK W HOWA [ " + OTP + " ] ");
