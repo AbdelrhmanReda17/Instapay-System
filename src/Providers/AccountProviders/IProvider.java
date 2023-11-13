@@ -1,6 +1,6 @@
 package Providers.AccountProviders;
 
-import User.Account;
+import User.model.Account;
 
 public interface IProvider {
     public  int Verify(String data);

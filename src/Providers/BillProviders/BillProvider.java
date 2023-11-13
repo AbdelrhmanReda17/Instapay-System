@@ -1,11 +1,6 @@
 package Providers.BillProviders;
 
-import Bills.Bill;
-import Bills.ElectricityBills;
-
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import Transaction_Service.Bills.Bill;
 
 public  interface BillProvider {
     public Bill GetBill(int billId);

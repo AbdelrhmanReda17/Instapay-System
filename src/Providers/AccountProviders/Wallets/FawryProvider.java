@@ -1,9 +1,8 @@
 package Providers.AccountProviders.Wallets;
 
 import Providers.AccountProviders.WalletProvider;
-import User.Account;
-import User.BankAccount;
-import User.WalletAccount;
+import User.model.Account;
+import User.model.WalletAccount;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

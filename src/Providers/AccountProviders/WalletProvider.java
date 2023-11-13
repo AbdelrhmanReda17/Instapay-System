@@ -1,7 +1,5 @@
 package Providers.AccountProviders;
 
-import User.Account;
-
 public abstract class WalletProvider implements IProvider {
 
     @Override

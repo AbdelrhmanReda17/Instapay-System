@@ -4,8 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 
 import Providers.AccountProviders.BankProvider;
-import User.Account;
-import User.BankAccount;
+import User.model.Account;
+import User.model.BankAccount;
 
 public class QNBProvider extends BankProvider {
     private final String Name = "QNB";

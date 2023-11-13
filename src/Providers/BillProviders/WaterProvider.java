@@ -1,8 +1,7 @@
 package Providers.BillProviders;
 
-import Bills.Bill;
-import Bills.GasBills;
-import Bills.WaterBills;
+import Transaction_Service.Bills.Bill;
+import Transaction_Service.Bills.WaterBills;
 
 import java.io.*;
 import java.util.ArrayList;

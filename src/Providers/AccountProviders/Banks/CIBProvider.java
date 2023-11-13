@@ -1,8 +1,8 @@
 package Providers.AccountProviders.Banks;
 
 import Providers.AccountProviders.BankProvider;
-import User.Account;
-import User.BankAccount;
+import User.model.Account;
+import User.model.BankAccount;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

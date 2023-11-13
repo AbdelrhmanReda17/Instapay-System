@@ -1,5 +1,5 @@
 package Providers.AccountProviders;
-import User.Account;
+import User.model.Account;
 import java.util.Random;
 
 public abstract class BankProvider implements IProvider {
