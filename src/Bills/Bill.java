@@ -25,7 +25,7 @@ public abstract class Bill {
         this.billId=billId;
         this.username=username;
         this.totalAmount = amount;
-        this.isPaid = false;
+        this.isPaid = isPaid;
     }
     Bill(){}
     public void setPaid(boolean isPaid) {

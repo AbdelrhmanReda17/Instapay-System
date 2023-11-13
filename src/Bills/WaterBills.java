@@ -2,7 +2,9 @@ package Bills;
 public class WaterBills extends Bill {
     private double usageInGallons;
     public WaterBills(int billId, String username, double amount , boolean isPaid, double usageInGallons){
+
         super( billId, username, amount , isPaid );
+
         this.usageInGallons = usageInGallons;
     }
     public WaterBills(){}

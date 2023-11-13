@@ -3,8 +3,8 @@ package Providers.AccountProviders;
 import User.Account;
 
 public interface IProvider {
-    public int Verify(String data);
-    public Account Update();
+    public  int Verify(String data);
+
     public String getName();
     public Account getAccount(String token);
 

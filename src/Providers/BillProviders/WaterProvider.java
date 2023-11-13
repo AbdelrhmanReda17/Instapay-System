@@ -19,6 +19,7 @@ public class WaterProvider implements BillProvider{
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] columns = line.split(",");
+                System.out.println(line);
                 if(columns.length != 5) continue;
                 if(Integer.parseInt(columns[0])!=billId)continue;
 
@@ -37,7 +38,7 @@ public class WaterProvider implements BillProvider{
         List<String> updatedLines = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(FilePath))) {
-            reader.readLine();
+            updatedLines.add(reader.readLine());
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] columns = line.split(",");

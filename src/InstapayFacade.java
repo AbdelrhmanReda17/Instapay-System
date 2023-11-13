@@ -117,6 +117,8 @@ public class InstapayFacade {
                         user.getAccount().getProvider().Withdraw(user.getAccount(),bill.getTotalAmount());
                         bill.setPaid(true);
                         billProvider.PayBill(bill);
+                        System.out.println("Bill Payed Sucessfully");
+
                     }else{
                         System.out.println("You Havent Sufficient Money to Pay");
                     }

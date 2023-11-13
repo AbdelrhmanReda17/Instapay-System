@@ -36,7 +36,8 @@ public class ElectricityProvider implements BillProvider {
         List<String> updatedLines = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(FilePath))) {
-            reader.readLine();
+
+            updatedLines.add(reader.readLine());
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] columns = line.split(",");
