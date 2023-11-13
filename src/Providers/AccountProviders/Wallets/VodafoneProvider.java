@@ -19,7 +19,7 @@ public class VodafoneProvider extends WalletProvider {
                 String[] columns = line.split(",");
                 if(columns.length != 4) continue;
                 if(!columns[3].equals(PhoneNumber)) continue;
-                return new WalletAccount(columns[3],Double.parseDouble(columns[2]),this,columns[0]);
+                return new WalletAccount(columns[0],Double.parseDouble(columns[2]),this,columns[3]);
             }
         }catch (Exception e) {
             throw new RuntimeException(e);

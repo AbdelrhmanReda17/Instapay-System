@@ -3,22 +3,14 @@ package Entities.User;
 import Providers.AccountProviders.IProvider;
 
 public class BankAccount extends Account {
-    private String AccountID;
     public BankAccount() {
-        super(0 , null , "0");
+        super(null,0 , null , "0");
     }
     public BankAccount(String AccountID, double Amount , IProvider bankProvider , String phoneNumber ){
-        super(Amount , bankProvider , phoneNumber);
-        this.AccountID = AccountID;
+        super( AccountID,Amount , bankProvider , phoneNumber);
     }
-    public String getAccountID() {
-        return AccountID;
-    }
-    public void Display() {
-        System.out.println("Account ID: " + this.AccountID);
-        System.out.println("Amount: " + getAmount());
-    }
+
     public String getData() {
-        return  "Bank" + "-" + getProvider().getName() + "," + AccountID;
+        return  "Bank" + "-" + getProvider().getName() + "," + getAccountId();
     }
 }

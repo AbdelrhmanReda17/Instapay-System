@@ -3,28 +3,13 @@ package Entities.User;
 import Providers.AccountProviders.IProvider;
 
 public class WalletAccount extends Account {
-    private String walletID;
-    private String phoneNumber;
     public WalletAccount(){
-        super(0 , null , "0");
+        super(null,0 , null , "0");
     }
-    public WalletAccount(String phoneNumber, double amount , IProvider walletProvider , String walletID){
-        super(amount , walletProvider , phoneNumber);
-        this.walletID = walletID;
-    }
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public String getWalletID() {
-        return walletID;
-    }
-
-    public void Display() {
-        System.out.println("Wallet ID: " + this.walletID);
-        System.out.println("Wallet Phone Number: " + this.phoneNumber);
+    public WalletAccount(String walletID, double amount , IProvider walletProvider , String phoneNumber){
+        super( walletID ,amount , walletProvider , phoneNumber);
     }
     public String getData(){
-        return "Wallet" + "-" + getProvider().getName() + "," + phoneNumber;
+        return "Wallet" + "-" + getProvider().getName() + "," + getPhoneNumber();
     }
 }

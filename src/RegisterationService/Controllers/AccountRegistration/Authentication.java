@@ -11,7 +11,7 @@ public class Authentication {
         String bankId = InstapayUtilites.TakeInput(String.class , "" , "" );
         int OTP = provider.Verify(bankId);
         if(OTP == -1) {
-            System.out.println("Invalid " + provider.getName() +" Number or " + provider.getName() + "is not registered. ");
+            System.out.println("Invalid " + provider.getName() +" Number or " + provider.getName() + " is not registered. ");
             return null;
         }
         if(RegisterView.VerfiyView(OTP,3)) return bankId;

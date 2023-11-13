@@ -26,15 +26,12 @@ public class CIBProvider extends BankProvider {
         }
         return null;
     }
-
     public String getName() {
         return Name;
     }
-
     public Account Update() {
         return null;
     }
-
     @Override
     public void Deposit(Account account, double ammount) {
         //Deposit should differ from each api to another but we don't have this option

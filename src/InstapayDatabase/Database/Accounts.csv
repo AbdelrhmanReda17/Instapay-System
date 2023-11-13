@@ -6,3 +6,6 @@ UserId,Username,Password,[AccountType-AccountProvider],WalletId Or AccountId,[Me
 6,Abdelrhman12,123123123aA@,Bank-CIB,1
 7,Abdelrhman13,123456aA@,Bank-CIB,1
 8,Abdelrhman123,123123aA@,Wallet-Vodafone,0123456789
+9,Kareem,123123aA@,Bank-QNB,1
+11,Karem,123123aA@,Wallet-Fawry,0123456789
+12,Yassin,123123aA@,Bank-QNB,1
