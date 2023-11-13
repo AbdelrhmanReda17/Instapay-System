@@ -4,6 +4,7 @@ import java.util.Set;
 
 import Istapay_interface.view.InstapayView;
 import Main.Main;
+import Main.InstapayUtilites;
 import Providers.BillProviders.BillProvider;
 import User.model.User;
 import Transaction_Service.Bills.Bill;
@@ -46,9 +47,9 @@ public class Transcation_Service
     void WalletTransfer() {
         transferController = new WalletTransferController();
         System.out.print("Please enter the mobile number: ");
-        String mobileNumber = InstapayView.TakeInput(String.class, "" , "");
+        String mobileNumber = InstapayUtilites.TakeInput(String.class, "" , "");
         System.out.print("Please enter the amount: ");
-        double amount = InstapayView.TakeInput(Double.class, "" , "");
+        double amount = InstapayUtilites.TakeInput(Double.class, "" , "");
         if (transferController.Transfer(user.getAccount() , mobileNumber , amount)) {
             System.out.println("Transfer completed successfully");
         }
@@ -56,9 +57,9 @@ public class Transcation_Service
     void InstapayTransfer(){
         transferController = new InstapayTransferController();
         System.out.print("Please enter the instapay account number : ");
-        String accountNumber = InstapayView.TakeInput(String.class, "" , "");
+        String accountNumber = InstapayUtilites.TakeInput(String.class, "" , "");
         System.out.print("Please enter the amount: ");
-        double amount = InstapayView.TakeInput(Double.class, "" , "");
+        double amount = InstapayUtilites.TakeInput(Double.class, "" , "");
         if (transferController.Transfer(user.getAccount() , accountNumber , amount)) {
             System.out.println("Transfer completed successfully");
         }
@@ -69,7 +70,7 @@ public class Transcation_Service
             return;
         }
         System.out.println("Please Enter the Id");
-        int billId = Main.InstapayUtilites.TakeInput(Integer.class , "" ,"Invalid Id");
+        int billId = InstapayUtilites.TakeInput(Integer.class , "" ,"Invalid Id");
         Bill bill=billProvider.GetBill(billId);
         if(bill!=null){
             if(bill.isPaid()){
@@ -79,7 +80,7 @@ public class Transcation_Service
                 System.out.println("Do you Want To Pay ");
                 System.out.println("1. Yes");
                 System.out.println("2. No");
-                int choice = Main.InstapayUtilites.TakeInput(Integer.class , "","Invalid choice");
+                int choice = InstapayUtilites.TakeInput(Integer.class , "","Invalid choice");
                 if(choice == 1){
                     //reduce the amount from the wallet
                     if(user.getAccount().getAmount()>=bill.getTotalAmount()){
@@ -114,7 +115,7 @@ public class Transcation_Service
         System.out.print("Please select an option [0 - "+ billProvidersFactoryArray.size() +"]: ");
 
         while (true){
-            int choice = Main.InstapayUtilites.TakeInput(Integer.class , "","" );
+            int choice = InstapayUtilites.TakeInput(Integer.class , "","" );
             if (choice == 0) {
                 return  null;
             }
@@ -131,9 +132,9 @@ public class Transcation_Service
     void BankTransfer(){
         transferController = new BankTransferController();
         System.out.print("Please enter the account number number: ");
-        String accountNumber = Main.InstapayUtilites.TakeInput(String.class, "" , "");
+        String accountNumber = InstapayUtilites.TakeInput(String.class, "" , "");
         System.out.print("Please enter the amount: ");
-        double amount = Main.InstapayUtilites.TakeInput(Double.class, "" , "");
+        double amount = InstapayUtilites.TakeInput(Double.class, "" , "");
         if (transferController.Transfer(user.getAccount() , accountNumber , amount)) {
             System.out.println("Transfer completed successfully");
         }
