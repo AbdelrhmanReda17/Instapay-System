@@ -32,14 +32,6 @@ public abstract class TransferController {
     }
     //violate open close 
     private boolean isValidTransaction(Account srAccount, Account distAccount) {
-        if (srAccount == null || distAccount == null) {
-            return false;
-        }
-        else if (srAccount instanceof WalletAccount && distAccount instanceof BankAccount) {
-            return false;
-        }
-        else {
-            return true;
-        }
+        return !(srAccount instanceof WalletAccount) || !(distAccount instanceof BankAccount);
     }
 }
