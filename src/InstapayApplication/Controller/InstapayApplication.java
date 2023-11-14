@@ -3,11 +3,16 @@ package InstapayApplication.Controller;
 import Entities.User.User;
 import InstapayApplication.Views.InstapayView;
 import LoginService.Controllers.LoginService;
+import Providers.AccountProviders.IProvider;
 import RegisterationService.Controllers.RegistrationService;
+import RegisterationService.Views.RegisterView;
+
+import java.util.Map;
 
 
 public class InstapayApplication {
     public User user;
+    public IProvider provider;
     public InstapayApplication() {
         user = new User();
     }
@@ -17,21 +22,24 @@ public class InstapayApplication {
             int choice = InstapayView.MainMenu();
             switch (choice) {
                 case 1:
-                    user = LoginService.Login();
+                    Map.Entry<User, IProvider> data = LoginService.Login();
+                    user=data.getKey();
+                    provider=data.getValue();
                     if (user != null) {
-                        MainMenuController.Display(user);
+                        MainMenuController.Display(user,provider);
                     }
                     break;
                 case 2:
                     RegistrationService register = new RegistrationService();
                     user = register.Register();
-                    if (user != null) {
-                        MainMenuController.Display(user);
-                    }
+                    if (user != null) {RegisterView.completeRegister();}
+                    else{RegisterView.failedRegister();}
                     break;
                 case 0:
                     InstapayView.DisplayExitMessage();
                     return;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + choice);
             }
         }
     }

@@ -20,7 +20,7 @@ public class QNBProvider extends BankProvider {
                 String[] columns = line.split(",");
                 if(columns.length != 4) continue;
                 if(!columns[0].equals(AccountId)) continue;
-                return new BankAccount(columns[0],Double.parseDouble(columns[2]) , this , columns[3]);
+                return new BankAccount(columns[0],Double.parseDouble(columns[2]) ,columns[3]);
             }
         }catch (Exception e) {
             throw new RuntimeException(e);

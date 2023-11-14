@@ -5,10 +5,11 @@ import Entities.User.Account;
 import InstapayApplication.Utilites.InstapayUtilites;
 import PaymentServices.BillPaymentServices.Views.BillPaymentView;
 import PaymentServices.IPaymentServices;
+import Providers.AccountProviders.IProvider;
 import Providers.BillProviders.BillProvider;
 
 public class BillPaymentServices implements IPaymentServices {
-    public void Pay(Account account) {
+    public void Pay(Account account, IProvider provider) {
         BillProvider billProvider = BillPaymentView.BillSelection();
         if(billProvider==null){
             return;
@@ -31,7 +32,7 @@ public class BillPaymentServices implements IPaymentServices {
             if(choice == 1){
                 // Reduce the amount from the wallet
                 if(account.getAmount()>=bill.getTotalAmount()){
-                    account.getProvider().Withdraw(account,bill.getTotalAmount());
+                    provider.Withdraw(account,bill.getTotalAmount());
                     bill.setPaid(true);
                     billProvider.PayBill(bill);  // why PayBill is Boolean ?!??
                     System.out.println("Bill Payed Successfully");

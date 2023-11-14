@@ -37,5 +37,11 @@ public class RegisterView {
         System.out.println("Please enter your password - Exit to close : ");
        return InstapayUtilites.TakeInput(String.class  , "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=!]).{8,}$" , "Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, one digit and one special character." );
     }
+    public  static void completeRegister(){
+        System.out.println("Successfully Registerd");
+    }
+    public  static void failedRegister(){
+        System.out.println("Register not completed");
+    }
 }
 

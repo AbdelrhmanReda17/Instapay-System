@@ -14,12 +14,13 @@ public abstract class TransferController {
         return false;
     }
     public boolean TransferHandler(Account srcAccount, Account distAccount, double amount) {
-        if (srcAccount.getProvider().Withdraw(srcAccount, amount)) {
-            distAccount.getProvider().Deposit(distAccount, amount);
-            return true;
-        }
-        else {
-            return false;
-        }
+        //if (srcAccount.getProvider().Withdraw(srcAccount, amount)) {
+            //distAccount.getProvider().Deposit(distAccount, amount);
+            //return true;
+        //}
+        //else {
+          //  return false;
+        //}
+        return true;
     }
 }

@@ -5,14 +5,19 @@ import Providers.AccountProviders.IProvider;
 import Entities.User.Account;
 import Entities.User.User;
 import java.io.*;
+import java.util.AbstractMap;
+import java.util.Map;
 
 public class DataManager {
     ProviderFactory providerFactory = new ProviderFactory();
     private final String AccountsFilePath = "src\\InstapayDatabase\\Database\\Accounts.csv";
     private String line = "";
-    public void SaveData(User user) {
+    public void SaveData(User user,IProvider provider) {
         try (FileWriter writer = new FileWriter(AccountsFilePath, true)) {
-            writer.write("\n"+ user.getData());
+            writer.write("\n"+ user.getUserID()+","+user.getUsername()+","+user.getPassword()+","+
+                    user.getAccount().getType()+"-"+provider.getName()+
+                    ","+user.getAccount().getData());
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -76,7 +81,7 @@ public class DataManager {
         }
     }
     */
-    public User LoadUser(String username , String password) {
+    public Map.Entry<User, IProvider> LoadUser(String username , String password) {
         try (BufferedReader reader = new BufferedReader(new FileReader(AccountsFilePath))) {
             reader.readLine();
             while ((line = reader.readLine()) != null) {
@@ -91,12 +96,13 @@ public class DataManager {
                 IProvider provider = providerFactory.CreateProvider(tokens[0] , tokens[1]);
                 Account account = provider.getAccount(columns[4]);
                 if(account == null) continue;
-                return new User(Integer.parseInt(columns[0]),columns[1],columns[2],account);
+                User user= new User(Integer.parseInt(columns[0]),columns[1],columns[2],account);
+                return new AbstractMap.SimpleEntry<>(user,provider);
             }
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
         System.out.println("Invalid Credentials !");
-        return null;
+        return new AbstractMap.SimpleEntry<>(null,null);
     }
 }
