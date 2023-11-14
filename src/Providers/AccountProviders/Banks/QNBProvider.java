@@ -11,6 +11,7 @@ public class QNBProvider extends BankProvider {
     private final String Name = "QNB";
     private Account updatedAccount;
     private final String AccountsFilePath = "src\\InstapayDatabase\\Database\\QNBAccounts.csv";
+
     @Override
     public Account getAccount(String AccountId) {
         try (BufferedReader reader = new BufferedReader(new FileReader(AccountsFilePath))) {
@@ -32,18 +33,16 @@ public class QNBProvider extends BankProvider {
     public String getName() {
         return Name;
     }
-
-
-    public Account Update() {
-        return null;
+    @Override
+    public void Update(String userID) {
     }
-
     @Override
     public void Deposit(Account account, double ammount) {
         //Deposit should differ from each api to another but we don't have this option
         //so we chose to duplicate.
         double currentAmount = account.getAmount();
         account.setAmount(currentAmount + ammount);
+        Update(account.getAccountId());
     }
     @Override
     public boolean Withdraw(Account account, double ammount) {
@@ -52,6 +51,7 @@ public class QNBProvider extends BankProvider {
         double currentAmount = account.getAmount();
         if (currentAmount >= ammount) {
             account.setAmount(currentAmount - ammount);
+            Update(account.getAccountId());
             return true;
         } else {
             return false;

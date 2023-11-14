@@ -3,6 +3,7 @@ package RegisterationService.Controllers.AccountRegistration;
 import Entities.User.Account;
 import Entities.User.Factories.BankFactory;
 import Entities.User.Factories.WalletFactory;
+import InstapayApplication.Utilites.InstapayUtilites;
 import Providers.AccountProviders.IProvider;
 import RegisterationService.Views.RegisterView;
 
@@ -22,7 +23,7 @@ public class WalletRegistration implements AccountRegistration {
     public IProvider WalletSelection(){
         WalletFactory walletFactory = new WalletFactory();
         Set<String> walletFactoryArray = walletFactory.GetWalletProviders();
-        int choice = RegisterView.ProviderMenu(walletFactoryArray);
+        int choice = InstapayUtilites.ProviderMenu(walletFactoryArray);
         if (choice == 0) {
             return null;
         }

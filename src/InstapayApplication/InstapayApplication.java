@@ -4,7 +4,7 @@ import Entities.User.User;
 import InstapayApplication.Views.InstapayView;
 import LoginService.Controllers.LoginService;
 import RegisterationService.Controllers.RegistrationService;
-import Transaction_Service.Controllers.Transcation_Service;
+import Transaction_Service.Controllers.TranscationService;
 import Transaction_Service.Controllers.TransferController;
 
 public class InstapayApplication {
@@ -25,7 +25,7 @@ public class InstapayApplication {
                     user = LoginService.Login();
                     if (user != null) {
                         System.out.println("You have successfully logged in");
-                        Transcation_Service trans = new Transcation_Service(user);
+                        TranscationService transaService = new TranscationService(user);
                         //trans.TranscationMenu();
                     }
                     break;
@@ -34,7 +34,7 @@ public class InstapayApplication {
                     user = register.Register();
                     if (user != null) {
                         System.out.println("You have successfully registered");
-                        Transcation_Service trans= new Transcation_Service(user);
+                        TranscationService transaService = new TranscationService(user);
                         //trans.TranscationMenu();
                     }
                     break;

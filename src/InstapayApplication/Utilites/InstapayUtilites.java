@@ -2,6 +2,7 @@ package InstapayApplication.Utilites;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Set;
 
 
 
@@ -35,6 +36,17 @@ public class InstapayUtilites {
             }
         }
         return choice;
+    }
+
+    
+    public static int ProviderMenu(Set<String> Array){
+        System.out.println("Please Select your provider : ");
+        for (int i = 1; i < Array.size() + 1; i++){
+            System.out.println(i + ". " + Array.toArray()[i - 1]);
+        }
+        System.out.println("0. Exit");
+        System.out.print("Please select an option [0 - "+ Array.size() +"]: ");
+        return InstapayUtilites.TakeInput(Integer.class , "[0-"+Array.size()+"]" , "Invalid input, please enter a number between [0 - "+ Array.size() +"]: " );
     }
 
 }

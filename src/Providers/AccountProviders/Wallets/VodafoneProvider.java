@@ -11,6 +11,7 @@ public class VodafoneProvider extends WalletProvider {
     private final String Name = "Vodafone";
     private final String AccountsFilePath = "src\\InstapayDatabase\\Database\\VodafoneAccounts.csv";
     @Override
+    //code Dublication.
     public Account getAccount(String PhoneNumber) {
         try (BufferedReader reader = new BufferedReader(new FileReader(AccountsFilePath))) {
             reader.readLine();
@@ -30,9 +31,11 @@ public class VodafoneProvider extends WalletProvider {
     public String getName() {
         return Name;
     }
-    public Account Update() {
-        return null;
+    @Override
+    public void Update(String userID) {
+        //Update User Data.
     }
+
 
     @Override
     public void Deposit(Account account, double ammount) {
@@ -40,6 +43,7 @@ public class VodafoneProvider extends WalletProvider {
         //so we chose to duplicate.
         double currentAmount = account.getAmount();
         account.setAmount(currentAmount + ammount);
+        Update(account.getAccountId());
     }
     @Override
     public boolean Withdraw(Account account, double ammount) {
@@ -48,6 +52,7 @@ public class VodafoneProvider extends WalletProvider {
         double currentAmount = account.getAmount();
         if (currentAmount >= ammount) {
             account.setAmount(currentAmount - ammount);
+            Update(account.getAccountId());
             return true;
         } else {
             return false;

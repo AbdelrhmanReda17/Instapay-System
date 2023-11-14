@@ -2,6 +2,7 @@ package RegisterationService.Controllers.AccountRegistration;
 
 import Entities.User.Account;
 import Entities.User.Factories.BankFactory;
+import InstapayApplication.Utilites.InstapayUtilites;
 import Providers.AccountProviders.IProvider;
 import RegisterationService.Views.RegisterView;
 
@@ -21,7 +22,7 @@ public class BankRegistration implements AccountRegistration {
     public IProvider BankSelection(){
         BankFactory bankFactory = new BankFactory();
         Set<String> bankFactoryArray = bankFactory.GetBankProviders();
-        int choice = RegisterView.ProviderMenu(bankFactoryArray);
+        int choice = InstapayUtilites.ProviderMenu(bankFactoryArray);
         if (choice == 0) {
             return null;
         }

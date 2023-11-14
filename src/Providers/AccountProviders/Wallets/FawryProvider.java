@@ -10,10 +10,10 @@ import java.io.FileReader;
 public class FawryProvider extends WalletProvider {
     private final String Name = "Fawry";
     private final String AccountsFilePath = "src\\InstapayDatabase\\Database\\FawryAccounts.csv";
-    public Account Update() {
-        return null;
+    
+    @Override
+    public void Update(String userID) {
     }
-
     @Override
     public String getName() {
         return Name;
@@ -35,13 +35,16 @@ public class FawryProvider extends WalletProvider {
         }
         return null;
     }
+
     @Override
     public void Deposit(Account account, double ammount) {
         //Deposit should differ from each api to another but we don't have this option
         //so we chose to duplicate.
         double currentAmount = account.getAmount();
         account.setAmount(currentAmount + ammount);
+        Update(account.getAccountId());
     }
+
     @Override
     public boolean Withdraw(Account account, double ammount) {
         //Withdraw should differ from each api to another but we don't have this option
@@ -49,6 +52,7 @@ public class FawryProvider extends WalletProvider {
         double currentAmount = account.getAmount();
         if (currentAmount >= ammount) {
             account.setAmount(currentAmount - ammount);
+            Update(account.getAccountId());
             return true;
         } else {
             return false;
