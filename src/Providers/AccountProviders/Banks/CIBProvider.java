@@ -9,8 +9,7 @@ import java.io.FileReader;
 
 public class CIBProvider extends BankProvider {
     private final String AccountsFilePath = "src\\InstapayDatabase\\Database\\CIBAccounts.csv";
-    private final String Name = "CIB";
-    
+
     @Override
     public Account getAccount(String AccountId) {
         try (BufferedReader reader = new BufferedReader(new FileReader(AccountsFilePath))) {
@@ -29,14 +28,15 @@ public class CIBProvider extends BankProvider {
     }
     @Override
     public String getName() {
-        return Name;
+        return "CIB";
     }
 
     @Override
     public void Update(String userID) {
 
     }
-
+    // UPDATE (ACCOUNT) => T7OTO
+    // DEPOSIT - AMOUUNT / WITHDRAW - AMOUNT
     @Override
     public void Deposit(Account account, double ammount) {
         //Deposit should differ from each api to another but we don't have this option

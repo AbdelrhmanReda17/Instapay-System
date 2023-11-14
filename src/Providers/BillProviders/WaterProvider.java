@@ -8,9 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WaterProvider implements BillProvider{
-    String FilePath="src\\Database\\WaterBills.csv";
-
-
+    String FilePath="src\\InstapayDatabase\\Database\\WaterBills.csv";
     @Override
     public Bill GetBill(int billId) {
         try (BufferedReader reader = new BufferedReader(new FileReader(FilePath))) {

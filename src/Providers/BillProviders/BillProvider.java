@@ -3,7 +3,7 @@ package Providers.BillProviders;
 import Entities.Bills.Bill;
 
 public  interface BillProvider {
-    public Bill GetBill(int billId);
-    public boolean PayBill(Bill updateBill);
+    Bill GetBill(int billId);
+    boolean PayBill(Bill updateBill);
 
 }

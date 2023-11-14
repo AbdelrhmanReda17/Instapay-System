@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ElectricityProvider implements BillProvider {
-    String FilePath="src\\Database\\ElectricityBills.csv";
+    String FilePath="src\\InstapayDatabase\\Database\\ElectricityBills.csv";
 
 
     @Override

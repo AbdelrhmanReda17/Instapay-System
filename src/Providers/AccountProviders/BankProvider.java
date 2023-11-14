@@ -1,9 +1,7 @@
 package Providers.AccountProviders;
 import Entities.User.Account;
-import java.util.Random;
 
 public abstract class BankProvider extends IProvider {
-
     @Override
     public int Verify(String AccountId) {
         int OTP = Integer.parseInt(generateOTP());

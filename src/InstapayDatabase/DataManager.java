@@ -4,11 +4,7 @@ import Providers.ProviderFactory;
 import Providers.AccountProviders.IProvider;
 import Entities.User.Account;
 import Entities.User.User;
-import Transaction_Service.view.BanckAccVeiw;
-import Transaction_Service.view.TransactionMenu;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class DataManager {
     ProviderFactory providerFactory = new ProviderFactory();
@@ -44,16 +40,15 @@ public class DataManager {
                 String[] columns = line.split(",");
                 if(columns.length != 5) continue;
                 if(columns[1].equals(username)) return false;
-                continue;
             }
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return true;
     }
-    public boolean UpdateUser(User updatedUser){
+   /* public boolean UpdateUser(User updatedUser){
         try {
-            File file = new File(AccountsFilePath);
+            File = new File(AccountsFilePath);
             List<String> lines = new ArrayList<>();
 
             // Read all lines into memory
@@ -80,6 +75,7 @@ public class DataManager {
             return false;
         }
     }
+    */
     public User LoadUser(String username , String password) {
         try (BufferedReader reader = new BufferedReader(new FileReader(AccountsFilePath))) {
             reader.readLine();
@@ -95,11 +91,7 @@ public class DataManager {
                 IProvider provider = providerFactory.CreateProvider(tokens[0] , tokens[1]);
                 Account account = provider.getAccount(columns[4]);
                 if(account == null) continue;
-
-                // mo2ktaan l8ayt ama nshof hn3ml eeh
-                    TransactionMenu menu= new BanckAccVeiw();
-                //--------------
-                return new User(Integer.parseInt(columns[0]),columns[1],columns[2],account,menu);
+                return new User(Integer.parseInt(columns[0]),columns[1],columns[2],account);
             }
         }catch (Exception e) {
             System.out.println(e.getMessage());

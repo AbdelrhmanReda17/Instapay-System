@@ -9,15 +9,10 @@ import java.util.Set;
 import java.util.function.Function;
 
 public class BankFactory {
-    private Map<String , Function<Void,BankProvider>> BankProviders = new HashMap<>();
-
+    private final Map<String , Function<Void,BankProvider>> BankProviders = new HashMap<>();
     public BankFactory() {
-        BankProviders.put("CIB" , bankProvider -> {
-            return new CIBProvider();
-        });
-        BankProviders.put("QNB" , bankProvider -> {
-            return new QNBProvider();
-        });
+        BankProviders.put("CIB" , bankProvider -> new CIBProvider());
+        BankProviders.put("QNB" , bankProvider -> new QNBProvider());
     }
     public BankProvider CreateBank(String type) {
         return BankProviders.get(type).apply(null);

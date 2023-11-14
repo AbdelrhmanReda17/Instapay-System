@@ -7,7 +7,7 @@ import java.util.Set;
 
 
 public class InstapayUtilites {
-    private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    private static final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     public static void Splitter() {
         System.out.println("----------------------------------");
     }
@@ -39,8 +39,8 @@ public class InstapayUtilites {
     }
 
     
-    public static int ProviderMenu(Set<String> Array){
-        System.out.println("Please Select your provider : ");
+    public static int GenericMenu(Set<String> Array , String name){
+        System.out.println("Please Select your " + name + " : ");
         for (int i = 1; i < Array.size() + 1; i++){
             System.out.println(i + ". " + Array.toArray()[i - 1]);
         }

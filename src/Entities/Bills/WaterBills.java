@@ -8,10 +8,6 @@ public class WaterBills extends Bill {
         this.usageInGallons = usageInGallons;
     }
     public WaterBills(){}
-    public void setUsage(double usage){
-        this.usageInGallons = usage;
-    }
-
 
     @Override
     public void PrintBillDetails() {

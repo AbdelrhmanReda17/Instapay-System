@@ -1,11 +1,9 @@
 package RegisterationService.Controllers.AccountRegistration;
 
 import Entities.User.Account;
-import Entities.User.Factories.BankFactory;
 import Entities.User.Factories.WalletFactory;
 import InstapayApplication.Utilites.InstapayUtilites;
 import Providers.AccountProviders.IProvider;
-import RegisterationService.Views.RegisterView;
 
 import java.util.Set;
 
@@ -23,7 +21,7 @@ public class WalletRegistration implements AccountRegistration {
     public IProvider WalletSelection(){
         WalletFactory walletFactory = new WalletFactory();
         Set<String> walletFactoryArray = walletFactory.GetWalletProviders();
-        int choice = InstapayUtilites.ProviderMenu(walletFactoryArray);
+        int choice = InstapayUtilites.GenericMenu(walletFactoryArray , "Wallet Provider");
         if (choice == 0) {
             return null;
         }

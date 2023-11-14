@@ -7,10 +7,6 @@ public class ElectricityBills extends Bill {
         this.usageInKWh = usageInKWh;
     }
     public ElectricityBills(){}
-    public void setUsage(double usage){
-        this.usageInKWh = usage;
-
-    }
 
     @Override
     public void PrintBillDetails() {

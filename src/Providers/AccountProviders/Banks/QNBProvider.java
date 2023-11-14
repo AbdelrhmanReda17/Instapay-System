@@ -8,7 +8,6 @@ import Entities.User.Account;
 import Entities.User.BankAccount;
 
 public class QNBProvider extends BankProvider {
-    private final String Name = "QNB";
     private Account updatedAccount;
     private final String AccountsFilePath = "src\\InstapayDatabase\\Database\\QNBAccounts.csv";
 
@@ -31,7 +30,7 @@ public class QNBProvider extends BankProvider {
 
     @Override
     public String getName() {
-        return Name;
+        return "QNB";
     }
     @Override
     public void Update(String userID) {

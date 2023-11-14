@@ -7,10 +7,7 @@ public class GasBills extends Bill {
         this.usageInCubicMeters = usageInCubicMeters;
     }
     public GasBills(){}
-    @Override
-    public void setUsage(double usage){
-        this.usageInCubicMeters = usage;
-    }
+
 
 
     @Override

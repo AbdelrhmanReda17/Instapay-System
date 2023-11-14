@@ -4,7 +4,6 @@ import Entities.User.Account;
 import Entities.User.Factories.BankFactory;
 import InstapayApplication.Utilites.InstapayUtilites;
 import Providers.AccountProviders.IProvider;
-import RegisterationService.Views.RegisterView;
 
 import java.util.Set;
 
@@ -22,7 +21,7 @@ public class BankRegistration implements AccountRegistration {
     public IProvider BankSelection(){
         BankFactory bankFactory = new BankFactory();
         Set<String> bankFactoryArray = bankFactory.GetBankProviders();
-        int choice = InstapayUtilites.ProviderMenu(bankFactoryArray);
+        int choice = InstapayUtilites.GenericMenu(bankFactoryArray , "Bank Provider");
         if (choice == 0) {
             return null;
         }

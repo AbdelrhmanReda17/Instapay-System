@@ -1,4 +1,4 @@
-import InstapayApplication.InstapayApplication;
+import InstapayApplication.Controller.InstapayApplication;
 
 public class Main {
     public static void main(String[] args) {

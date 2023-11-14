@@ -8,7 +8,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 
 public class FawryProvider extends WalletProvider {
-    private final String Name = "Fawry";
     private final String AccountsFilePath = "src\\InstapayDatabase\\Database\\FawryAccounts.csv";
     
     @Override
@@ -16,7 +15,7 @@ public class FawryProvider extends WalletProvider {
     }
     @Override
     public String getName() {
-        return Name;
+        return "Fawry";
     }
 
     @Override
