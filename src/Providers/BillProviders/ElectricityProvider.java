@@ -28,7 +28,6 @@ public class ElectricityProvider implements BillProvider {
                 throw new RuntimeException(e);
             }
             return null;
-
     }
 
     @Override
