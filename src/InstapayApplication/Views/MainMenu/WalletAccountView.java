@@ -10,6 +10,6 @@ public class WalletAccountView implements MainMenu {
         System.out.println("4. Transfer to Another instapay account");
         System.out.println("0. Log out");
         System.out.print("Please select an option [0 - 4]: ");
-        return InstapayUtilites.TakeInput(Integer.class, "[0-4]" , "");
+        return InstapayUtilites.TakeInput(Integer.class, "[0-4]" , "Invalid input, please try again enter a number between  [0 - 4]:");
     }
 }

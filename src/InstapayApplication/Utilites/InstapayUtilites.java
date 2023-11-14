@@ -29,7 +29,7 @@ public class InstapayUtilites {
                         }
                         isValidInput = true;
                     } else {
-                        System.out.println(message);
+                        System.out.print(message);
                     }
             } catch (Exception e) {
                 System.out.print("Invalid input, please try again: ");
