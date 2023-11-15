@@ -1,13 +1,10 @@
 package LoginService.Controllers;
-import Entities.User.Account;
 
-import InstapayApplication.Utilites.InstapayUtilites;
 import InstapayDatabase.DataManager;
 import LoginService.Views.LoginView;
-import Entities.User.User;
+import InstapayApplication.Entities.User.User;
 import Providers.AccountProviders.IProvider;
 
-import java.util.AbstractMap;
 import java.util.Map;
 
 public class LoginService {

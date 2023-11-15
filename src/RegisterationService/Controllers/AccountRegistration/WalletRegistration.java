@@ -1,15 +1,12 @@
 package RegisterationService.Controllers.AccountRegistration;
 
-import Entities.User.Account;
-import Entities.User.Factories.AccountFactory;
-import Entities.User.Factories.BankFactory;
-import Entities.User.Factories.WalletFactory;
-import InstapayApplication.Utilites.InstapayUtilites;
+import InstapayApplication.Entities.User.Account;
+import InstapayApplication.Entities.User.Factories.WalletFactory;
+import Utilites.InstapayUtilites;
 import Providers.AccountProviders.IProvider;
 
 import java.util.AbstractMap;
 import java.util.Map;
-import java.util.Set;
 
 public class WalletRegistration extends AccountRegistration {
     @Override

@@ -1,4 +1,4 @@
-package Entities.Bills;
+package InstapayApplication.Entities.Bills;
 public class ElectricityBills extends Bill {
 
     private double usageInKWh;

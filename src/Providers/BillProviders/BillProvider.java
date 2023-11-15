@@ -1,6 +1,6 @@
 package Providers.BillProviders;
 
-import Entities.Bills.Bill;
+import InstapayApplication.Entities.Bills.Bill;
 
 public  interface BillProvider {
     Bill GetBill(int billId);

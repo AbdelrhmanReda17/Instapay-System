@@ -1,7 +1,7 @@
 package TransactionService.BankTransactionService.Views;
 
-import Entities.User.Factories.BankFactory;
-import InstapayApplication.Utilites.InstapayUtilites;
+import InstapayApplication.Entities.User.Factories.BankFactory;
+import Utilites.InstapayUtilites;
 import TransactionService.TransferMenuView;
 
 public class BankAccountTransferMenu extends TransferMenuView {

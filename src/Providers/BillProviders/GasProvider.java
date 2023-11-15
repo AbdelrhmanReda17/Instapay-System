@@ -1,7 +1,7 @@
 package Providers.BillProviders;
 
-import Entities.Bills.Bill;
-import Entities.Bills.GasBills;
+import InstapayApplication.Entities.Bills.Bill;
+import InstapayApplication.Entities.Bills.GasBills;
 
 import java.io.*;
 import java.util.ArrayList;

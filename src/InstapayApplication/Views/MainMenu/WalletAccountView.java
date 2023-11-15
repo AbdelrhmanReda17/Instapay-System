@@ -1,8 +1,6 @@
 package InstapayApplication.Views.MainMenu;
 
-import InstapayApplication.Utilites.InstapayUtilites;
-
-import javax.swing.text.Utilities;
+import Utilites.InstapayUtilites;
 
 public class WalletAccountView implements MainMenu {
     public int DisplayMenu(){

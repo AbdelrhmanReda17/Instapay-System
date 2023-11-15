@@ -1,7 +1,7 @@
 package InstapayApplication.Views.MainMenu;
 
 
-import InstapayApplication.Utilites.InstapayUtilites;
+import Utilites.InstapayUtilites;
 
 public class BankAccountView implements MainMenu {
     public int DisplayMenu(){

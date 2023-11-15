@@ -1,7 +1,5 @@
 package InstapayApplication.Views;
-import InstapayApplication.Utilites.InstapayUtilites;
-
-import javax.swing.text.Utilities;
+import Utilites.InstapayUtilites;
 
 public class InstapayView {
     public static int MainMenu() {

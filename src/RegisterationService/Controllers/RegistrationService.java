@@ -1,12 +1,12 @@
 package RegisterationService.Controllers;
 
 
-import Entities.User.Account;
-import InstapayApplication.Utilites.InstapayUtilites;
+import InstapayApplication.Entities.User.Account;
+import Utilites.InstapayUtilites;
 import InstapayDatabase.DataManager;
 import Providers.AccountProviders.IProvider;
 import RegisterationService.Views.RegisterView;
-import Entities.User.User;
+import InstapayApplication.Entities.User.User;
 
 import java.util.Map;
 

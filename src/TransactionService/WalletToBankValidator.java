@@ -1,9 +1,8 @@
 package TransactionService;
 
-import Entities.User.Account;
-import Entities.User.BankAccount;
-import Entities.User.WalletAccount;
-import TransactionService.TransferValidator;
+import InstapayApplication.Entities.User.Account;
+import InstapayApplication.Entities.User.BankAccount;
+import InstapayApplication.Entities.User.WalletAccount;
 
 /**
  * WalletToBankValidator

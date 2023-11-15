@@ -1,6 +1,5 @@
-package Entities.User.Factories;
+package InstapayApplication.Entities.User.Factories;
 
-import Providers.AccountProviders.BankProvider;
 import Providers.AccountProviders.IProvider;
 
 import java.util.HashMap;

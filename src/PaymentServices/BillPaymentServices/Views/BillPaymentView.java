@@ -1,9 +1,9 @@
 package PaymentServices.BillPaymentServices.Views;
 
-import Entities.Bills.Bill;
-import InstapayApplication.Utilites.InstapayUtilites;
+import InstapayApplication.Entities.Bills.Bill;
+import Utilites.InstapayUtilites;
 import Providers.BillProviders.BillProvider;
-import Entities.Bills.Factories.BillProvidersFactory;
+import InstapayApplication.Entities.Bills.Factories.BillProvidersFactory;
 
 import java.util.Set;
 

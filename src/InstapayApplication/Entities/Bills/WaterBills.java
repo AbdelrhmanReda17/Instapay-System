@@ -1,4 +1,4 @@
-package Entities.Bills;
+package InstapayApplication.Entities.Bills;
 public class WaterBills extends Bill {
     private double usageInGallons;
     public WaterBills(int billId, String username, double amount , boolean isPaid, double usageInGallons){

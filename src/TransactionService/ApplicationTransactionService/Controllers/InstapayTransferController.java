@@ -1,7 +1,7 @@
 package TransactionService.ApplicationTransactionService.Controllers;
 
-import Entities.User.Account;
-import Entities.User.User;
+import InstapayApplication.Entities.User.Account;
+import InstapayApplication.Entities.User.User;
 import InstapayDatabase.DataManager;
 import Providers.AccountProviders.IProvider;
 import TransactionService.TransferController;

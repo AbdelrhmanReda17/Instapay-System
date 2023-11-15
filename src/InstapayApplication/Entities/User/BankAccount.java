@@ -1,6 +1,4 @@
-package Entities.User;
-
-import Providers.AccountProviders.IProvider;
+package InstapayApplication.Entities.User;
 
 public class BankAccount extends Account {
     public BankAccount(String AccountID , String password, double Amount , String phoneNumber ){

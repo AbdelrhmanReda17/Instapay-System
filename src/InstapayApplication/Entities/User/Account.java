@@ -1,6 +1,4 @@
-package Entities.User;
-
-import Providers.AccountProviders.IProvider;
+package InstapayApplication.Entities.User;
 
 public abstract class Account {
     private double amount;

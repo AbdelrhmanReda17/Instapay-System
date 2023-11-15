@@ -1,4 +1,4 @@
-package Entities.User;
+package InstapayApplication.Entities.User;
 
 
 public class User {

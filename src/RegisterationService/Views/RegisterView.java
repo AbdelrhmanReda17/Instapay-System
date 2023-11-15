@@ -1,7 +1,5 @@
 package RegisterationService.Views;
-import InstapayApplication.Utilites.InstapayUtilites;
-
-import java.util.Set;
+import Utilites.InstapayUtilites;
 
 public class RegisterView {
 

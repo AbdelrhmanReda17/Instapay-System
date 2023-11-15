@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Providers.AccountProviders.BankProvider;
-import Entities.User.Account;
-import Entities.User.BankAccount;
+import InstapayApplication.Entities.User.Account;
+import InstapayApplication.Entities.User.BankAccount;
 
 public class QNBProvider extends BankProvider {
     private Account updatedAccount;

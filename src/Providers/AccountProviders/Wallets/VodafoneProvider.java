@@ -1,8 +1,8 @@
 package Providers.AccountProviders.Wallets;
 
 import Providers.AccountProviders.WalletProvider;
-import Entities.User.Account;
-import Entities.User.WalletAccount;
+import InstapayApplication.Entities.User.Account;
+import InstapayApplication.Entities.User.WalletAccount;
 
 import java.io.*;
 import java.util.ArrayList;

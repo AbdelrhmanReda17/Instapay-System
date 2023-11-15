@@ -1,8 +1,6 @@
 package TransactionService.ApplicationTransactionService.Views;
 
-import Entities.User.Factories.BankFactory;
-import Entities.User.Factories.WalletFactory;
-import InstapayApplication.Utilites.InstapayUtilites;
+import Utilites.InstapayUtilites;
 import TransactionService.TransferMenuView;
 
 

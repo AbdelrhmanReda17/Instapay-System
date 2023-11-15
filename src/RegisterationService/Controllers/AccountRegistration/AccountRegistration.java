@@ -1,8 +1,7 @@
 package RegisterationService.Controllers.AccountRegistration;
 
-import Entities.User.Account;
-import Entities.User.User;
-import InstapayApplication.Utilites.InstapayUtilites;
+import InstapayApplication.Entities.User.Account;
+import Utilites.InstapayUtilites;
 import Providers.AccountProviders.IProvider;
 import RegisterationService.Views.RegisterView;
 

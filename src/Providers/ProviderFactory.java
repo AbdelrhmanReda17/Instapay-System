@@ -1,9 +1,9 @@
 package Providers;
 
 import Providers.AccountProviders.IProvider;
-import Entities.User.Factories.BankFactory;
-import Entities.User.Factories.WalletFactory;
-import Entities.User.Account;
+import InstapayApplication.Entities.User.Factories.BankFactory;
+import InstapayApplication.Entities.User.Factories.WalletFactory;
+import InstapayApplication.Entities.User.Account;
 
 public class ProviderFactory {
 

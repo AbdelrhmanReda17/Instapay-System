@@ -1,6 +1,6 @@
 package Providers.AccountProviders;
 
-import Entities.User.Account;
+import InstapayApplication.Entities.User.Account;
 
 import java.util.Random;
 

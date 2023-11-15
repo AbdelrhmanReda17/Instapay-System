@@ -1,8 +1,6 @@
 package LoginService.Views;
-import InstapayApplication.Utilites.InstapayUtilites;
+import Utilites.InstapayUtilites;
 import InstapayDatabase.DataManager;
-
-import javax.swing.text.Utilities;
 
 public class LoginView {
     public static String[] LoginMenu(DataManager dataManager){

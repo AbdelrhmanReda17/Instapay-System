@@ -1,4 +1,4 @@
-package Entities.Bills;
+package InstapayApplication.Entities.Bills;
 
 public abstract class Bill {
     public String getUsername() {

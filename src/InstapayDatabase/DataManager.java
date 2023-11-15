@@ -2,12 +2,10 @@ package InstapayDatabase;
 
 import Providers.ProviderFactory;
 import Providers.AccountProviders.IProvider;
-import Entities.User.Account;
-import Entities.User.User;
+import InstapayApplication.Entities.User.Account;
+import InstapayApplication.Entities.User.User;
 import java.io.*;
 import java.util.AbstractMap;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 public class DataManager {

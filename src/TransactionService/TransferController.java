@@ -1,8 +1,7 @@
 package TransactionService;
 
 import Providers.AccountProviders.IProvider;
-import Entities.User.Account;
-import Entities.User.User;
+import InstapayApplication.Entities.User.Account;
 
 import java.util.Map;
 

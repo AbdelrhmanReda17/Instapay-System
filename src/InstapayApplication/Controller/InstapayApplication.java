@@ -1,7 +1,6 @@
 package InstapayApplication.Controller;
 
-import Entities.User.User;
-import InstapayApplication.Utilites.InstapayUtilites;
+import InstapayApplication.Entities.User.User;
 import InstapayApplication.Views.InstapayView;
 import LoginService.Controllers.LoginService;
 import LoginService.Views.LoginView;

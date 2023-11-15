@@ -1,6 +1,6 @@
 package InstapayApplication.Views.Factories;
 
-import Entities.User.Account;
+import InstapayApplication.Entities.User.Account;
 import InstapayApplication.Views.MainMenu.*;
 
 

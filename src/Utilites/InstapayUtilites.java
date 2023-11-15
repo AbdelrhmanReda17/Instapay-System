@@ -1,6 +1,6 @@
-package InstapayApplication.Utilites;
+package Utilites;
 
-import Entities.User.Factories.AccountFactory;
+import InstapayApplication.Entities.User.Factories.AccountFactory;
 import Providers.AccountProviders.IProvider;
 
 import java.io.BufferedReader;

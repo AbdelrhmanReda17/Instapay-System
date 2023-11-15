@@ -1,6 +1,4 @@
-package Entities.User;
-
-import Providers.AccountProviders.IProvider;
+package InstapayApplication.Entities.User;
 
 public class WalletAccount extends Account {
     public WalletAccount(String walletID , String password, double amount , String phoneNumber){
