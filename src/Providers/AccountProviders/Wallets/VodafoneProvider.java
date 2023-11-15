@@ -1,6 +1,5 @@
 package Providers.AccountProviders.Wallets;
 
-import Providers.AccountProviders.WalletProvider;
 import InstapayApplication.Entities.User.Account;
 import InstapayApplication.Entities.User.WalletAccount;
 

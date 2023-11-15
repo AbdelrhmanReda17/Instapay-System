@@ -1,6 +1,7 @@
-package Providers.AccountProviders;
+package Providers.AccountProviders.Wallets;
 
 import InstapayApplication.Entities.User.Account;
+import Providers.AccountProviders.IProvider;
 
 public abstract class WalletProvider extends IProvider {
     @Override

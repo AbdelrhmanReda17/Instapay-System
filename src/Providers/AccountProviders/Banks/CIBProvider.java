@@ -1,6 +1,5 @@
 package Providers.AccountProviders.Banks;
 
-import Providers.AccountProviders.BankProvider;
 import InstapayApplication.Entities.User.Account;
 import InstapayApplication.Entities.User.BankAccount;
 

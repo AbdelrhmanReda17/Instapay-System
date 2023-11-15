@@ -1,5 +1,6 @@
-package Providers.AccountProviders;
+package Providers.AccountProviders.Banks;
 import InstapayApplication.Entities.User.Account;
+import Providers.AccountProviders.IProvider;
 
 public abstract class BankProvider extends IProvider {
     @Override
