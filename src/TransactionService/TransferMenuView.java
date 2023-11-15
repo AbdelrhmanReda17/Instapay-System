@@ -1,7 +1,11 @@
 package TransactionService;
 
-import Entities.User.User;
+import Providers.AccountProviders.IProvider;
 
-public interface TransferMenuView {
-    public void Transfer(TransferController transferController, User user);
+public abstract class TransferMenuView {
+    protected IProvider distUserProvider;
+    abstract public String[] Display();
+    public IProvider getDistUserProvider() {
+        return distUserProvider;
+    }
 }

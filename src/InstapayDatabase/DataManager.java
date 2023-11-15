@@ -105,4 +105,26 @@ public class DataManager {
         System.out.println("Invalid Credentials !");
         return new AbstractMap.SimpleEntry<>(null,null);
     }
+
+    public Map.Entry<User,IProvider> GetUserByID(String ID) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(AccountsFilePath))) {
+            reader.readLine();
+            while ((line = reader.readLine()) != null) {
+                String[] columns = line.split(",");
+                if(columns.length != 5) continue;
+                if(!columns[0].equals(ID)) continue;
+                String[] tokens = columns[3].split("-");
+                IProvider provider = providerFactory.CreateProvider(tokens[0] , tokens[1]);
+                Account account = provider.getAccount(columns[4]);
+                if(account == null) continue;
+                User user= new User(Integer.parseInt(columns[0]),columns[1],columns[2],account);
+                return new AbstractMap.SimpleEntry<>(user,provider);
+            }
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println("Invalid Credentials !");
+        return new AbstractMap.SimpleEntry<>(null,null);
+    }
+
 }

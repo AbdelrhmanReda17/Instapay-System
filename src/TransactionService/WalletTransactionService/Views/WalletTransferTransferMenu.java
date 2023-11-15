@@ -1,33 +1,25 @@
 package TransactionService.WalletTransactionService.Views;
 
 import Entities.User.Factories.WalletFactory;
-import Entities.User.User;
 import InstapayApplication.Utilites.InstapayUtilites;
-import Providers.AccountProviders.IProvider;
-import TransactionService.TransferController;
 import TransactionService.TransferMenuView;
 
 /**
  * WalletTransferView
  */
-public class WalletTransferTransferMenu implements TransferMenuView {
-
-    @Override
-    public void Transfer(TransferController transferController, User user) {
-        WalletFactory walletFactory = new WalletFactory();
-        int choice = InstapayUtilites.GenericMenu(walletFactory.GetWalletProviders() , "Wallet Provider");
-        IProvider provider = walletFactory.CreateWallet(walletFactory.GetWalletProviders().toArray()[choice - 1].toString());
-        if (provider == null) 
-            return;
-        
+public class WalletTransferTransferMenu extends TransferMenuView {
+    public String[] Display() {
+        //Third index is mobile number and second is amount.
+        distUserProvider = InstapayUtilites.GenericSelection(new WalletFactory());
+        if(distUserProvider == null) return null;
+        String[] data = {"", ""};
         System.out.print("Please enter the mobile number: ");
-        String mobileNumber = InstapayUtilites.TakeInput(String.class, "" , "");
+        data[0] = InstapayUtilites.TakeInput(String.class, "" , "");
+        if(data[0].equals("Exit") ) return null;
         System.out.print("Please enter the amount: ");
-        double amount = InstapayUtilites.TakeInput(Double.class, "" , "");
-        if (transferController.Transfer(user.getAccount() , mobileNumber , amount)) {
-            System.out.println("Transfer completed successfully");
-        }
+        double amount = InstapayUtilites.TakeInput(Double.class, "^\\\\d+(\\\\.\\\\d+)?$" , "");
+        if(amount == 0) return null;
+        data[1] = String.valueOf(amount);
+        return data;
     }
-
-
 }

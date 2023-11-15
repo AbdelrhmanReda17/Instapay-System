@@ -1,19 +1,22 @@
 package TransactionService.BankTransactionService.Views;
 
-import Entities.User.User;
+import Entities.User.Factories.BankFactory;
 import InstapayApplication.Utilites.InstapayUtilites;
-import TransactionService.TransferController;
 import TransactionService.TransferMenuView;
 
-public class BankAccountTransferMenu implements TransferMenuView {
-    @Override
-    public void Transfer(TransferController transferController, User user) {
-        System.out.print("Please enter the account number number: ");
-        String accountNumber = InstapayUtilites.TakeInput(String.class, "" , "");
+public class BankAccountTransferMenu extends TransferMenuView {
+    public String[] Display() {
+        //first Index is MobileNumber and second is amount.
+        distUserProvider = InstapayUtilites.GenericSelection(new BankFactory());
+        if(distUserProvider == null) return null;
+        String[] data = {"", ""};
+        System.out.print("Please enter the Bank account ID: ");
+        data[0] = InstapayUtilites.TakeInput(String.class, "" , "");
+        if(data[0].equals("Exit") ) return null;
         System.out.print("Please enter the amount: ");
-        double amount = InstapayUtilites.TakeInput(Double.class, "" , "");
-        if (transferController.Transfer(user.getAccount() , accountNumber , amount)) {
-            System.out.println("Transfer completed successfully");
-        }
+        double amount = InstapayUtilites.TakeInput(Double.class, "^\\\\d+(\\\\.\\\\d+)?$" , "");
+        if(amount == 0) return null;
+        data[1] = String.valueOf(amount);
+        return data;
     }
 }

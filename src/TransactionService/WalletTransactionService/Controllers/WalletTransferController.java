@@ -1,13 +1,16 @@
 package TransactionService.WalletTransactionService.Controllers;
 
 import Entities.User.Account;
-import Entities.User.User;
 import Providers.AccountProviders.IProvider;
 import TransactionService.TransferController;
 
+import java.util.Map;
+
 public class WalletTransferController extends TransferController {
     @Override
-    public Account ParseUserData(String userData, IProvider provider) {
-        return null;
+    public Map.Entry<Account,IProvider> ParseUserData(IProvider provider, String[] data){
+        Account account = provider.getAccount(data[0]);
+        if(account == null) return null;
+        return Map.entry(account, provider);
     }
 }

@@ -2,16 +2,17 @@ package TransactionService.ApplicationTransactionService.Controllers;
 
 import Entities.User.Account;
 import Entities.User.User;
+import InstapayDatabase.DataManager;
 import Providers.AccountProviders.IProvider;
 import TransactionService.TransferController;
 
-public class InstapayTransferController extends TransferController {
+import java.util.Map;
 
-    public InstapayTransferController() {
-        
-    }
+public class InstapayTransferController extends TransferController {
     @Override
-    public Account ParseUserData(String userData, IProvider provider) {
-        return null;
+    public Map.Entry<Account , IProvider> ParseUserData(IProvider provider,String[] data){
+        DataManager dataManager = new DataManager();
+        Map.Entry<User,IProvider> entry = dataManager.GetUserByID(data[1]);
+        return Map.entry(entry.getKey().getAccount(),entry.getValue());
     }
 }

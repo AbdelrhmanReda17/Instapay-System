@@ -1,17 +1,16 @@
 package TransactionService.BankTransactionService.Controllers;
 
 import Entities.User.Account;
-import Entities.User.User;
 import Providers.AccountProviders.IProvider;
 import TransactionService.TransferController;
 
+import java.util.Map;
+
 public class BankTransferController extends TransferController {
-
     @Override
-    public Account ParseUserData(String userData, IProvider provider) {
-        Account distAccount = provider.getAccount(userData);
-        if (distAccount == null) return null;
-        return distAccount;
+    public Map.Entry<Account,IProvider> ParseUserData(IProvider provider,String[] data){
+        Account account = provider.getAccount(data[0]);
+        if(account == null) return null;
+        return Map.entry(account , provider);
     }
-
 }

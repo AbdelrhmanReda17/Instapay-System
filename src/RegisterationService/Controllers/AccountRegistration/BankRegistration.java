@@ -14,22 +14,13 @@ public class BankRegistration implements AccountRegistration {
     @Override
     public Map.Entry<Account, IProvider> Register() {
         while (true){
-            IProvider provider = BankSelection();
+            IProvider provider = InstapayUtilites.GenericSelection(new BankFactory());
             if(provider == null) return null;
             String bankId = Authentication.Verify(provider);
             if(bankId == null) continue;
             Account acc=provider.getAccount(bankId);
             return new AbstractMap.SimpleEntry<>(acc,provider);
         }
-    }
-    public IProvider BankSelection(){
-        BankFactory bankFactory = new BankFactory();
-        Set<String> bankFactoryArray = bankFactory.GetBankProviders();
-        int choice = InstapayUtilites.GenericMenu(bankFactoryArray , "Bank Provider");
-        if (choice == 0) {
-            return null;
-        }
-        return bankFactory.CreateBank(bankFactoryArray.toArray()[choice - 1].toString());
     }
 
 }

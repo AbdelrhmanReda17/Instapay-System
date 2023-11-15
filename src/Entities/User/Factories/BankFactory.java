@@ -8,17 +8,10 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
 
-public class BankFactory {
-    private final Map<String , Function<Void,BankProvider>> BankProviders = new HashMap<>();
+public class BankFactory extends AccountFactory {
     public BankFactory() {
-        BankProviders.put("CIB" , bankProvider -> new CIBProvider());
-        BankProviders.put("QNB" , bankProvider -> new QNBProvider());
-    }
-    public BankProvider CreateBank(String type) {
-        return BankProviders.get(type).apply(null);
+        AccountProviders.put("CIB" , bankProvider -> new CIBProvider());
+        AccountProviders.put("QNB" , bankProvider -> new QNBProvider());
     }
 
-    public Set<String> GetBankProviders() {
-        return BankProviders.keySet();
-    }
 }

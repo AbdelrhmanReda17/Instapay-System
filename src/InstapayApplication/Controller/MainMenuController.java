@@ -21,7 +21,7 @@ public class MainMenuController {
                     ar.Pay(user.getAccount(),provider);
                     break;
                 case 3,4,5:
-                    TransferMenuFactory.CreateTransferViewMenu(choice).Transfer(TransferControllerFactory.CreateTransferController(choice) ,user);
+                    //TransferMenuFactory.CreateTransferViewMenu(choice).Transfer(TransferControllerFactory.CreateTransferController(choice) ,user, provider);
                     break;
                 case 0:
                     return;
