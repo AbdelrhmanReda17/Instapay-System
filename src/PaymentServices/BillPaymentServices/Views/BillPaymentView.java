@@ -3,7 +3,7 @@ package PaymentServices.BillPaymentServices.Views;
 import InstapayApplication.Entities.Bills.Bill;
 import Utilites.InstapayUtilites;
 import Providers.BillProviders.BillProvider;
-import InstapayApplication.Entities.Bills.Factories.BillProvidersFactory;
+import Providers.Factories.BillProvidersFactory;
 
 import java.util.Set;
 

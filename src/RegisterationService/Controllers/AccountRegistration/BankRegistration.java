@@ -1,7 +1,7 @@
 package RegisterationService.Controllers.AccountRegistration;
 
 import InstapayApplication.Entities.User.Account;
-import InstapayApplication.Entities.User.Factories.BankFactory;
+import Providers.Factories.BankProviderFactory;
 import Utilites.InstapayUtilites;
 import Providers.AccountProviders.IProvider;
 
@@ -12,7 +12,7 @@ public class BankRegistration extends AccountRegistration {
     @Override
     public Map.Entry<Account, IProvider> Register() {
         while (true){
-            IProvider provider = InstapayUtilites.GenericSelection(new BankFactory() , "Bank Provider");
+            IProvider provider = InstapayUtilites.GenericSelection(new BankProviderFactory() , "Bank Provider");
             if(provider == null) return null;
             String phoneNumber = Verify(provider , "Bank Account");
             if(phoneNumber == null) continue;

@@ -1,7 +1,7 @@
 package RegisterationService.Controllers.AccountRegistration;
 
 import InstapayApplication.Entities.User.Account;
-import InstapayApplication.Entities.User.Factories.WalletFactory;
+import Providers.Factories.WalletProviderFactory;
 import Utilites.InstapayUtilites;
 import Providers.AccountProviders.IProvider;
 
@@ -12,7 +12,7 @@ public class WalletRegistration extends AccountRegistration {
     @Override
     public  Map.Entry<Account, IProvider> Register() {
         while (true){
-            IProvider provider = InstapayUtilites.GenericSelection(new WalletFactory() , "Wallet Provider");
+            IProvider provider = InstapayUtilites.GenericSelection(new WalletProviderFactory() , "Wallet Provider");
             if(provider == null) return null;
             String bankId = Verify(provider , "Wallet Account");
             if(bankId == null) continue;

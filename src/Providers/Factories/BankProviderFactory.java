@@ -1,10 +1,10 @@
-package InstapayApplication.Entities.User.Factories;
+package Providers.Factories;
 
 import Providers.AccountProviders.Banks.CIBProvider;
 import Providers.AccountProviders.Banks.QNBProvider;
 
-public class BankFactory extends AccountFactory {
-    public BankFactory() {
+public class BankProviderFactory extends AccountProviderFactory {
+    public BankProviderFactory() {
         AccountProviders.put("CIB" , bankProvider -> new CIBProvider());
         AccountProviders.put("QNB" , bankProvider -> new QNBProvider());
     }

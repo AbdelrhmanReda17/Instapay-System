@@ -1,6 +1,6 @@
 package InstapayDatabase;
 
-import Providers.ProviderFactory;
+import Providers.Factories.ProviderFactory;
 import Providers.AccountProviders.IProvider;
 import InstapayApplication.Entities.User.Account;
 import InstapayApplication.Entities.User.User;

@@ -1,6 +1,6 @@
 package TransactionService.WalletTransactionService.Views;
 
-import InstapayApplication.Entities.User.Factories.WalletFactory;
+import Providers.Factories.WalletProviderFactory;
 import Utilites.InstapayUtilites;
 import TransactionService.TransferMenuView;
 
@@ -10,7 +10,7 @@ import TransactionService.TransferMenuView;
 public class WalletTransferTransferMenu extends TransferMenuView {
     public String[] Display() {
         //Third index is mobile number and second is amount.
-        distUserProvider = InstapayUtilites.GenericSelection(new WalletFactory() , "Wallet Provider");
+        distUserProvider = InstapayUtilites.GenericSelection(new WalletProviderFactory() , "Wallet Provider");
         if(distUserProvider == null) return null;
         String[] data = {"", ""};
         System.out.print("Please enter the mobile number: ");

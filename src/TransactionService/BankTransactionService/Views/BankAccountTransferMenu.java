@@ -1,13 +1,13 @@
 package TransactionService.BankTransactionService.Views;
 
-import InstapayApplication.Entities.User.Factories.BankFactory;
+import Providers.Factories.BankProviderFactory;
 import Utilites.InstapayUtilites;
 import TransactionService.TransferMenuView;
 
 public class BankAccountTransferMenu extends TransferMenuView {
     public String[] Display() {
         //first Index is MobileNumber and second is amount.
-        distUserProvider = InstapayUtilites.GenericSelection(new BankFactory() , "Bank Provider");
+        distUserProvider = InstapayUtilites.GenericSelection(new BankProviderFactory() , "Bank Provider");
         if(distUserProvider == null) return null;
         String[] data = {"", ""};
         System.out.print("Please enter the Bank account ID: ");

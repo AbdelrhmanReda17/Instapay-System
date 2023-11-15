@@ -1,4 +1,4 @@
-package InstapayApplication.Entities.User.Factories;
+package Providers.Factories;
 
 import Providers.AccountProviders.IProvider;
 
@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
 
-public abstract class AccountFactory {
+public abstract class AccountProviderFactory {
     protected final Map<String , Function<Void, IProvider>> AccountProviders = new HashMap<>();
     public IProvider CreateProvider(String type){
         return AccountProviders.get(type).apply(null);

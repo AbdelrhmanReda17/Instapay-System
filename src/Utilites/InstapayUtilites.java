@@ -1,6 +1,6 @@
 package Utilites;
 
-import InstapayApplication.Entities.User.Factories.AccountFactory;
+import Providers.Factories.AccountProviderFactory;
 import Providers.AccountProviders.IProvider;
 
 import java.io.BufferedReader;
@@ -52,13 +52,13 @@ public class InstapayUtilites {
         return InstapayUtilites.TakeInput(Integer.class , "[0-"+Array.size()+"]" , "Invalid input, please enter a number between [0 - "+ Array.size() +"]: " );
     }
 
-    public static IProvider GenericSelection(AccountFactory accountFactory , String name){
-        Set<String> FactoryArray = accountFactory.GetProviders();
+    public static IProvider GenericSelection(AccountProviderFactory accountProviderFactory, String name){
+        Set<String> FactoryArray = accountProviderFactory.GetProviders();
         int choice = InstapayUtilites.GenericMenu(FactoryArray , name);
         if (choice == 0) {
             return null;
         }
-        return accountFactory.CreateProvider(FactoryArray.toArray()[choice - 1].toString());
+        return accountProviderFactory.CreateProvider(FactoryArray.toArray()[choice - 1].toString());
     }
 
 }

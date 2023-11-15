@@ -1,10 +1,10 @@
-package InstapayApplication.Entities.User.Factories;
+package Providers.Factories;
 
 
 import Providers.AccountProviders.Wallets.*;
 
-public class WalletFactory extends AccountFactory {
-    public WalletFactory() {
+public class WalletProviderFactory extends AccountProviderFactory {
+    public WalletProviderFactory() {
         AccountProviders.put("Vodafone" , bankProvider -> new VodafoneProvider());
         AccountProviders.put("Fawry" , bankProvider -> new FawryProvider());
     }
