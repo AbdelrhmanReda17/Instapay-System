@@ -14,12 +14,12 @@ public class BankRegistration implements AccountRegistration {
     @Override
     public Map.Entry<Account, IProvider> Register() {
         while (true){
-            IProvider provider = InstapayUtilites.GenericSelection(new BankFactory());
+            IProvider provider = InstapayUtilites.GenericSelection(new BankFactory() , "Bank Provider");
             if(provider == null) return null;
-            String bankId = Authentication.Verify(provider);
-            if(bankId == null) continue;
-            Account acc=provider.getAccount(bankId);
-            return new AbstractMap.SimpleEntry<>(acc,provider);
+            String phoneNumber = Authentication.Verify(provider , "Bank Account");
+            if(phoneNumber == null) continue;
+            Account account = provider.getAccount(phoneNumber);
+            return new AbstractMap.SimpleEntry<>(account,provider);
         }
     }
 

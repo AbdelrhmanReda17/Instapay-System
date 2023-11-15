@@ -60,10 +60,7 @@ public class DataManager {
                 String[] columns = line.split(",");
                 if(columns.length != 5) continue;
                 if(!columns[1].equals(username)) continue;
-                if(!columns[2].equals(password)) {
-                    System.out.println("Invalid Password , Please try again !");
-                    return null;
-                }
+                if(!columns[2].equals(password)) return null;
                 String[] tokens = columns[3].split("-");
                 IProvider provider = providerFactory.CreateProvider(tokens[0] , tokens[1]);
                 Account account = provider.getAccount(columns[4]);

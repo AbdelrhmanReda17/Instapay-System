@@ -15,11 +15,11 @@ public class WalletRegistration implements AccountRegistration {
     @Override
     public  Map.Entry<Account, IProvider> Register() {
         while (true){
-            IProvider provider = InstapayUtilites.GenericSelection(new WalletFactory());
+            IProvider provider = InstapayUtilites.GenericSelection(new WalletFactory() , "Wallet Provider");
             if(provider == null) return null;
-            String bankId = Authentication.Verify(provider);
+            String bankId = Authentication.Verify(provider , "Wallet Account");
             if(bankId == null) continue;
-            Account acc =provider.getAccount(bankId);
+            Account acc = provider.getAccount(bankId);
             return new AbstractMap.SimpleEntry<>(acc,provider);
         }
     }

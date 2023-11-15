@@ -7,7 +7,7 @@ import TransactionService.TransferMenuView;
 public class BankAccountTransferMenu extends TransferMenuView {
     public String[] Display() {
         //first Index is MobileNumber and second is amount.
-        distUserProvider = InstapayUtilites.GenericSelection(new BankFactory());
+        distUserProvider = InstapayUtilites.GenericSelection(new BankFactory() , "Bank Provider");
         if(distUserProvider == null) return null;
         String[] data = {"", ""};
         System.out.print("Please enter the Bank account ID: ");

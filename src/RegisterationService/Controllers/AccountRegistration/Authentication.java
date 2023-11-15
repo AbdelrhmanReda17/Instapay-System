@@ -5,8 +5,7 @@ import Providers.AccountProviders.IProvider;
 import RegisterationService.Views.RegisterView;
 
 public class Authentication {
-    public static String Verify(IProvider provider){
-        String name = provider.getName();
+    public static String Verify(IProvider provider , String name){
         System.out.print("Please enter your "+ name +" Number - Exit to close : ");
         String bankId = InstapayUtilites.TakeInput(String.class , "" , "" );
         int OTP = provider.Verify(bankId);

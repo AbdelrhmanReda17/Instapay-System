@@ -1,6 +1,7 @@
 package InstapayApplication.Controller;
 
 import Entities.User.User;
+import InstapayApplication.Utilites.InstapayUtilites;
 import InstapayApplication.Views.Factories.ViewFactory;
 import PaymentServices.BillPaymentServices.Controllers.BillPaymentServices;
 import PaymentServices.IPaymentServices;
@@ -14,22 +15,20 @@ public class MainMenuController {
             int choice = ViewFactory.CreateMainMenu(user.getAccount()).DisplayMenu();
             switch (choice) {
                 case 1:
-                    System.out.println("------------------------------------");
+                    InstapayUtilites.Splitter();
                     System.out.println("User balance: " + user.getAccount().getAmount());
-                    System.out.println("------------------------------------");
                     break;
                 case 2:
+                    InstapayUtilites.Splitter();
                     IPaymentServices ar = new BillPaymentServices();
                     ar.Pay(user.getAccount(),provider);
                     break;
                 case 3,4,5:
+                    InstapayUtilites.Splitter();
                     TransferControllerFactory.CreateTransferController(choice).Transfer(TransferMenuFactory.CreateTransferViewMenu(choice) , user.getAccount() , provider);
                     break;
                 case 0:
                     return;
-                default:
-                    System.out.println("AR");
-                    break;
             }
         }
     }

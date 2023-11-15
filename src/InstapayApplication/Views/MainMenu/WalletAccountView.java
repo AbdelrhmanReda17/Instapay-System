@@ -2,6 +2,8 @@ package InstapayApplication.Views.MainMenu;
 
 import InstapayApplication.Utilites.InstapayUtilites;
 
+import javax.swing.text.Utilities;
+
 public class WalletAccountView implements MainMenu {
     public int DisplayMenu(){
         System.out.println("1. Inquire about his balance");
