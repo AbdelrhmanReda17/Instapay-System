@@ -9,41 +9,28 @@ import Providers.AccountProviders.IProvider;
 import Providers.BillProviders.BillProvider;
 
 public class BillPaymentServices implements IPaymentServices {
+    @Override
     public void Pay(Account account, IProvider provider) {
         BillProvider billProvider = BillPaymentView.BillSelection();
         if(billProvider==null){
             return;
         }
-        System.out.println("Please Enter the Id");
-        int billId = InstapayUtilites.TakeInput(Integer.class , "" ,"Invalid Id");
-        Bill bill=billProvider.GetBill(billId);
-        if(bill==null){
-            System.out.println("Bill Not Found");
-            return;
-        }
-        if(bill.isPaid()){
-            System.out.println("Bill Already Paid");
-        }else{
+        Bill bill=BillPaymentView.CheckBill(billProvider);
+        if(bill!=null){
             bill.PrintBillDetails();
-            System.out.println("Do you want to pay the bill ?");
-            System.out.println("1. Yes");
-            System.out.println("2. No");
-            int choice = InstapayUtilites.TakeInput(Integer.class , "","Invalid choice");
-            if(choice == 1){
+            boolean choice = BillPaymentView.ConfirmPayment();
+            if(choice) {
                 // Reduce the amount from the wallet
-                if(account.getAmount()>=bill.getTotalAmount()){
-                    provider.Withdraw(account,bill.getTotalAmount());
-                    bill.setPaid(true);
-                    billProvider.PayBill(bill);  // why PayBill is Boolean ?!??
-                    System.out.println("Bill Payed Successfully");
-                }else{
-                    System.out.println("You Haven't Sufficient Money to Pay");
+                if (account.getAmount() >= bill.getTotalAmount()) {
+                    if(billProvider.PayBill(bill)){
+                        provider.Withdraw(account, bill.getTotalAmount());
+                        System.out.println("Bill Payed Successfully");
+                    }else{
+                        System.out.println("Error In Payment");
+                    }
+                } else {
+                    System.out.println("No Sufficient Money");
                 }
-
-            }else if(choice == 2){
-                return;
-            }else{
-                System.out.println("Invalid Input");
             }
         }
     }
