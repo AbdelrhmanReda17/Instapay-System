@@ -10,13 +10,13 @@ import java.util.AbstractMap;
 import java.util.Map;
 import java.util.Set;
 
-public class BankRegistration implements AccountRegistration {
+public class BankRegistration extends AccountRegistration {
     @Override
     public Map.Entry<Account, IProvider> Register() {
         while (true){
             IProvider provider = InstapayUtilites.GenericSelection(new BankFactory() , "Bank Provider");
             if(provider == null) return null;
-            String phoneNumber = Authentication.Verify(provider , "Bank Account");
+            String phoneNumber = Verify(provider , "Bank Account");
             if(phoneNumber == null) continue;
             Account account = provider.getAccount(phoneNumber);
             return new AbstractMap.SimpleEntry<>(account,provider);
