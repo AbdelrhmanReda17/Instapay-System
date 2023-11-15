@@ -79,6 +79,7 @@ public class FawryProvider extends WalletProvider {
             Update(account);
             return true;
         } else {
+            System.out.println("Insufficient Funds!");
             return false;
 
         }

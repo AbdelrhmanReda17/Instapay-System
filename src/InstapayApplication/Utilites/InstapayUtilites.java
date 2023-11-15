@@ -43,7 +43,7 @@ public class InstapayUtilites {
 
     
     public static int GenericMenu(Set<String> Array , String name){
-        System.out.println("Please Select your " + name + " : ");
+        System.out.println("Please Select a " + name + " : ");
         for (int i = 1; i < Array.size() + 1; i++){
             System.out.println(i + ". " + Array.toArray()[i - 1]);
         }

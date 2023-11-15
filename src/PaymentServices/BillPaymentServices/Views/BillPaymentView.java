@@ -25,7 +25,7 @@ public class BillPaymentView {
         }
     }
     public static boolean ConfirmPayment(){
-        System.out.println("Do you want proceed Payment ?");
+        System.out.print("Do you want proceed Payment ?: ");
         System.out.println("1. Yes");
         System.out.println("2. No");
         int choice = InstapayUtilites.TakeInput(Integer.class , "[1-2]","Invalid choice");
@@ -33,7 +33,7 @@ public class BillPaymentView {
 
     }
     public static Bill CheckBill(BillProvider billProvider){
-        System.out.println("Please Enter the Id");
+        System.out.print("Please Enter the Id: ");
         int billId = InstapayUtilites.TakeInput(Integer.class , "" ,"Invalid Id");
         Bill bill=billProvider.GetBill(billId);
         if(bill==null){

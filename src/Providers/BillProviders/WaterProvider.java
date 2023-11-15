@@ -16,7 +16,6 @@ public class WaterProvider implements BillProvider{
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] columns = line.split(",");
-                System.out.println(line);
                 if(columns.length != 5) continue;
                 if(Integer.parseInt(columns[0])!=billId)continue;
 

@@ -1,5 +1,4 @@
 @UserId,Username,Password,[AccountType-AccountProvider],WalletId Or AccountId
-
 1,yassin,123123Aa@,Wallet-Vodafone,0123456
 2,yass,123123Aa@,Wallet-Vodafone,0123456
 3,abdoman,123123Aa@,Bank-QNB,1

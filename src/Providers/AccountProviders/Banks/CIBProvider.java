@@ -82,9 +82,9 @@ public class CIBProvider extends BankProvider {
             account.setAmount(currentAmount - ammount);
             Update(account);
             return true;
-        } else {
+        }  else {
+            System.out.println("Insufficient Funds!");
             return false;
-
         }
     }
 }
