@@ -23,9 +23,10 @@ public class InstapayApplication {
             switch (choice) {
                 case 1:
                     Map.Entry<User, IProvider> data = LoginService.Login();
-                    user=data.getKey();
-                    provider=data.getValue();
-                    if (user != null) {
+                    if(data != null){
+                        System.out.println("Successfully Logined!");
+                        user= data.getKey();
+                        provider= data.getValue();
                         MainMenuController.Display(user,provider);
                     }
                     break;

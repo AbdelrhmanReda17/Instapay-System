@@ -1,27 +1,32 @@
 package TransactionService;
 
-import InstapayDatabase.DataManager;
 import Providers.AccountProviders.IProvider;
 import Entities.User.Account;
 import Entities.User.User;
-import TransactionService.WalletTransactionService.Controllers.WalletToBankValidator;
 
 import java.util.Map;
 
 public abstract class TransferController {
     private final TransferValidator validator = new WalletToBankValidator();
-    protected DataManager accountsManger = new DataManager();
     public abstract Map.Entry<Account,IProvider> ParseUserData(IProvider provider,String[] data);
-    public boolean Transfer(TransferMenuView menuView, User user, IProvider srcProvider) {
+    public boolean Transfer(TransferMenuView menuView, Account srcAccount, IProvider srcProvider) {
         String[] userInput = menuView.Display();
-
-        return userInput != null && TransferHandler(user.getAccount(),srcProvider,userInput,menuView.getDistUserProvider());
+        return userInput != null && TransferHandler(srcAccount,srcProvider,userInput,menuView.getDistUserProvider());
     }
     public boolean TransferHandler(Account srcAccount,IProvider srcProvider, String[] userInputData,IProvider distUserProvider) {
+        if(userInputData[0].equals(srcAccount.getAccountId())){
+            System.out.println("Cannot transfer to the same account !! ");
+            return false;
+        }
         Map.Entry<Account,IProvider> distUser = ParseUserData(distUserProvider, userInputData);
+        if(distUser == null) {
+            System.out.println("Account not found !");
+            return false;
+        }
         double amount = Double.parseDouble(userInputData[1]);
-        if (srcProvider.Withdraw(srcAccount, amount)) {
+        if (validator.Validate(srcAccount , distUser.getKey()) && srcProvider.Withdraw(srcAccount, amount)) {
             distUser.getValue().Deposit(distUser.getKey(), amount);
+            System.out.println("Transaction done successfully");
             return true;
         }
         else {

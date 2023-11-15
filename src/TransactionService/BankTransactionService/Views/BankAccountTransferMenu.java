@@ -14,7 +14,7 @@ public class BankAccountTransferMenu extends TransferMenuView {
         data[0] = InstapayUtilites.TakeInput(String.class, "" , "");
         if(data[0].equals("Exit") ) return null;
         System.out.print("Please enter the amount: ");
-        double amount = InstapayUtilites.TakeInput(Double.class, "^\\\\d+(\\\\.\\\\d+)?$" , "");
+        double amount = InstapayUtilites.TakeInput(Double.class, "" , "");
         if(amount == 0) return null;
         data[1] = String.valueOf(amount);
         return data;

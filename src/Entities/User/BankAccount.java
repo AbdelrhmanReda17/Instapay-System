@@ -3,8 +3,8 @@ package Entities.User;
 import Providers.AccountProviders.IProvider;
 
 public class BankAccount extends Account {
-    public BankAccount(String AccountID, double Amount , String phoneNumber ){
-        super( AccountID,Amount , phoneNumber);
+    public BankAccount(String AccountID , String password, double Amount , String phoneNumber ){
+        super( AccountID , password,Amount , phoneNumber);
     }
 
     public String getData() {

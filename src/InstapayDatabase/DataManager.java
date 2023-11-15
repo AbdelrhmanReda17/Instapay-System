@@ -6,6 +6,8 @@ import Entities.User.Account;
 import Entities.User.User;
 import java.io.*;
 import java.util.AbstractMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class DataManager {
@@ -44,43 +46,13 @@ public class DataManager {
             while ((line = reader.readLine()) != null) {
                 String[] columns = line.split(",");
                 if(columns.length != 5) continue;
-                if(columns[1].equals(username)) return false;
+                if(columns[1].equals(username)) return true;
             }
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return true;
+        return false;
     }
-   /* public boolean UpdateUser(User updatedUser){
-        try {
-            File = new File(AccountsFilePath);
-            List<String> lines = new ArrayList<>();
-
-            // Read all lines into memory
-            try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    lines.add(line);
-                }
-            }
-            for (int i = 0; i < lines.size(); i++) {
-                String line = lines.get(i);
-                if (line.contains(String.valueOf(updatedUser.getUserID()))) {
-                    lines.set(i, updatedUser.getData());
-                    break;
-                }
-            }
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
-                for (String line : lines) {
-                    writer.write(line + System.lineSeparator());
-                }
-            }
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-    */
     public Map.Entry<User, IProvider> LoadUser(String username , String password) {
         try (BufferedReader reader = new BufferedReader(new FileReader(AccountsFilePath))) {
             reader.readLine();
@@ -102,8 +74,7 @@ public class DataManager {
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        System.out.println("Invalid Credentials !");
-        return new AbstractMap.SimpleEntry<>(null,null);
+        return null;
     }
 
     public Map.Entry<User,IProvider> GetUserByID(String ID) {
@@ -123,8 +94,7 @@ public class DataManager {
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        System.out.println("Invalid Credentials !");
-        return new AbstractMap.SimpleEntry<>(null,null);
+        return null;
     }
 
 }

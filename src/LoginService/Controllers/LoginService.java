@@ -12,8 +12,8 @@ import java.util.Map;
 public class LoginService {
     public static Map.Entry<User, IProvider> Login() {
         DataManager accountsManger = new DataManager();
-        String[] data = LoginView.LoginMenu();
+        String[] data = LoginView.LoginMenu(accountsManger);
         if(data != null) return accountsManger.LoadUser(data[0] , data[1]);
-        return  new AbstractMap.SimpleEntry<>(null,null);
+        return null;
     }
 }

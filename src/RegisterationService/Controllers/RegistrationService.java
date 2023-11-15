@@ -4,8 +4,11 @@ package RegisterationService.Controllers;
 import Entities.User.Account;
 import InstapayApplication.Utilites.InstapayUtilites;
 import InstapayDatabase.DataManager;
+import Providers.AccountProviders.IProvider;
 import RegisterationService.Views.RegisterView;
 import Entities.User.User;
+
+import java.util.Map;
 
 public class RegistrationService {
     private User user;
@@ -19,17 +22,17 @@ public class RegistrationService {
             InstapayUtilites.Splitter();
             int choice = RegisterView.RegisterMenu();
             if(choice == 0) return null;
-            Account account = RegistrationFactory.createRegistration(choice);
-            if(account == null) continue;
-            return Registration(account);
+            Map.Entry<Account, IProvider> userPair = RegistrationFactory.createRegistration(choice);
+            if(userPair == null) continue;
+            return Registration(userPair);
         }
     }
-    public User Registration(Account Account){
-        user.setUserType(Account);
+    public User Registration(Map.Entry<Account, IProvider>  userPair){
+        user.setUserType(userPair.getKey());
         while (true){
             if(getUserDetails()){
                 user.setUserID(accountsManger.getMaxID() + 1);
-                accountsManger.SaveData(user);
+                accountsManger.SaveData(user , userPair.getValue());
                 return user;
             }
             return null;
@@ -38,7 +41,7 @@ public class RegistrationService {
    public boolean getUserDetails(){
        while(true){
            String username= RegisterView.Takeusername();
-           if(!accountsManger.checkUsername(username)){
+           if(accountsManger.checkUsername(username)){
                System.out.println("Username already exists , Please try again");
                continue;
            }

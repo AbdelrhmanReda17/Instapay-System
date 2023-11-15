@@ -4,8 +4,9 @@ import Providers.AccountProviders.WalletProvider;
 import Entities.User.Account;
 import Entities.User.WalletAccount;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class VodafoneProvider extends WalletProvider {
      final String AccountsFilePath = "src\\InstapayDatabase\\Database\\VodafoneAccounts.csv";
@@ -19,7 +20,7 @@ public class VodafoneProvider extends WalletProvider {
                 String[] columns = line.split(",");
                 if(columns.length != 4) continue;
                 if(!columns[3].equals(PhoneNumber)) continue;
-                return new WalletAccount(columns[0],Double.parseDouble(columns[2]),columns[3]);
+                return new WalletAccount(columns[0], columns[1],Double.parseDouble(columns[2]),columns[3]);
             }
         }catch (Exception e) {
             throw new RuntimeException(e);
@@ -31,10 +32,36 @@ public class VodafoneProvider extends WalletProvider {
         return "Vodafone";
     }
     @Override
-    public void Update(String userID) {
-        //Update User Data.
-    }
+    public boolean Update(Account account) {
+        try {
+            File file = new File(AccountsFilePath);
+            List<String> lines = new ArrayList<>();
 
+            // Read all lines into memory
+            try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    lines.add(line);
+                }
+            }
+            for (int i = 0; i < lines.size(); i++) {
+                String line = lines.get(i);
+                String[] tokens = line.split(",");
+                if (tokens[0].equals(account.getAccountId()) && tokens[3].equals(account.getPhoneNumber())) {
+                    lines.set(i , account.getAccountId() + "," + account.getPassword() + "," + account.getAmount() + "," + account.getPhoneNumber());
+                    break;
+                }
+            }
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+                for (String line : lines) {
+                    writer.write(line + System.lineSeparator());
+                }
+            }
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 
     @Override
     public void Deposit(Account account, double ammount) {
@@ -42,7 +69,7 @@ public class VodafoneProvider extends WalletProvider {
         //so we chose to duplicate.
         double currentAmount = account.getAmount();
         account.setAmount(currentAmount + ammount);
-        Update(account.getAccountId());
+        Update(account);
     }
     @Override
     public boolean Withdraw(Account account, double ammount) {
@@ -51,9 +78,10 @@ public class VodafoneProvider extends WalletProvider {
         double currentAmount = account.getAmount();
         if (currentAmount >= ammount) {
             account.setAmount(currentAmount - ammount);
-            Update(account.getAccountId());
+            Update(account);
             return true;
         } else {
+            System.out.println("Insufficient Funds!");
             return false;
 
         }

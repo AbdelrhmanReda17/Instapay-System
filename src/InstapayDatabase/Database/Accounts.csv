@@ -1,12 +1,5 @@
-UserId,Username,Password,[AccountType-AccountProvider],WalletId Or AccountId
-1,Yassin el gamed,123456,Bank-CIB,1
-3,Abdelrahman,123456,Bank-QNB,20
-4,Abdelrhman,159753123222aA@,Bank-CIB,2
-5,abdoman,123456aaEe@,Bank-CIB,3
-6,Abdelrhman12,123123123aA@,Bank-CIB,1
-7,Abdelrhman13,123456aA@,Bank-CIB,1
-8,Abdelrhman123,123123aA@,Wallet-Vodafone,0123456789
-9,Kareem,123123aA@,Bank-QNB,1
-11,Karem,123123aA@,Wallet-Fawry,0123456789
-12,Yassin,123123aA@,Bank-QNB,1
-13,karem,123123Aa@,Wallet-Vodafone,0123456789
+@UserId,Username,Password,[AccountType-AccountProvider],WalletId Or AccountId
+
+1,yassin,123123Aa@,Wallet-Vodafone,0123456
+2,yass,123123Aa@,Wallet-Vodafone,0123456789
+3,abdoman,123123Aa@,Bank-QNB,1

@@ -9,8 +9,8 @@ public class ProviderFactory {
 
     public IProvider CreateProvider(String type , String providerType) {
         return switch (type) {
-            case "Bank" -> new BankFactory().CreateBank(providerType);
-            case "Wallet" -> new WalletFactory().CreateWallet(providerType);
+            case "Bank" -> new BankFactory().CreateProvider(providerType);
+            case "Wallet" -> new WalletFactory().CreateProvider(providerType);
             default -> null;
         };
     }

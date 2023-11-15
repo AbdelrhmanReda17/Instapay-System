@@ -6,11 +6,12 @@ public abstract class Account {
     private double amount;
     private final String phoneNumber;
     private final String accountId;
-
-    public Account(String accountId ,double amount , String phoneNumber) {
+    private final String password;
+    public Account(String accountId, String password  ,double amount , String phoneNumber) {
         this.amount = amount;
         this.phoneNumber = phoneNumber;
         this.accountId = accountId;
+        this.password = password;
     }
     public String getAccountId() {
         return accountId;
@@ -24,8 +25,11 @@ public abstract class Account {
     public double getAmount() {
         return amount;
     }
-    abstract public String getData();
-     abstract public String getType();
+    public String getPassword() {
+        return password;
+    }
 
+    abstract public String getData();
+    abstract public String getType();
 
 }

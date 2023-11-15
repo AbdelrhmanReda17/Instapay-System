@@ -14,14 +14,16 @@ public class MainMenuController {
             int choice = ViewFactory.CreateMainMenu(user.getAccount()).DisplayMenu();
             switch (choice) {
                 case 1:
-//                        user.getAccount().Display();
+                    System.out.println("------------------------------------");
+                    System.out.println("User balance: " + user.getAccount().getAmount());
+                    System.out.println("------------------------------------");
                     break;
                 case 2:
                     IPaymentServices ar = new BillPaymentServices();
                     ar.Pay(user.getAccount(),provider);
                     break;
                 case 3,4,5:
-                    //TransferMenuFactory.CreateTransferViewMenu(choice).Transfer(TransferControllerFactory.CreateTransferController(choice) ,user, provider);
+                    TransferControllerFactory.CreateTransferController(choice).Transfer(TransferMenuFactory.CreateTransferViewMenu(choice) , user.getAccount() , provider);
                     break;
                 case 0:
                     return;

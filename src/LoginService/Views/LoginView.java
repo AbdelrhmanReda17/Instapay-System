@@ -1,12 +1,16 @@
 package LoginService.Views;
 import InstapayApplication.Utilites.InstapayUtilites;
+import InstapayDatabase.DataManager;
+
 public class LoginView {
-    public static String[] LoginMenu(){
+    public static String[] LoginMenu(DataManager dataManager){
         System.out.println("----------------------------------");
         String[] data= {"",""} ;
         System.out.print("Please enter your username - Exit to close : ");
         data[0] = InstapayUtilites.TakeInput(String.class  , "^[a-zA-Z0-9_\\.]{3,20}$" , "Username must be between 3 and 20 characters long and can only contain letters, numbers, underscores and dots." );
-        if(data[0].equals("Exit")){
+        if(data[0].equals("Exit")) return null;
+        if(!dataManager.checkUsername(data[0])){
+            System.out.println("User not founded");
             return null;
         }
         System.out.print("Please enter your password - Exit to close : ");

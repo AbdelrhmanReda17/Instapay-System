@@ -12,7 +12,8 @@ public class InstapayTransferController extends TransferController {
     @Override
     public Map.Entry<Account , IProvider> ParseUserData(IProvider provider,String[] data){
         DataManager dataManager = new DataManager();
-        Map.Entry<User,IProvider> entry = dataManager.GetUserByID(data[1]);
+        Map.Entry<User,IProvider> entry = dataManager.GetUserByID(data[0]);
+        if(entry == null) return null;
         return Map.entry(entry.getKey().getAccount(),entry.getValue());
     }
 }

@@ -6,7 +6,7 @@ import java.util.Random;
 
 public abstract class IProvider {
     public abstract int Verify(String data);
-    public abstract void Update(String userID);
+    public abstract boolean Update(Account account);
     public abstract String getName();
     public abstract Account getAccount(String token);
     public String generateOTP() {
