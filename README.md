@@ -1,5 +1,3 @@
-Sure, I can modify the README to include details about the `BankRegistration`, `LoginService`, `PaymentService`, `TransactionService` and their related classes. Here's the updated README:
-
 # Instapay System
 
 Instapay System is a Java-based application that simulates a payment system. It allows users to register, login, inquire about their balance, pay bills, and transfer money between different types of accounts such as bank accounts and wallets. The application follows a microservices architecture, where each service is responsible for a specific functionality and can operate independently.
